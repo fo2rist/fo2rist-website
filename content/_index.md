@@ -1,7 +1,7 @@
 ---
 hero:
-  heading: Novela, the simplest way to start publishing with Hugo and Forestry.
+  heading: fo2rist & T-Kittens.
   maxWidthPX: 652
 seo:
-  image: /images/hero-2.jpg
+  image: /images/t-kittens_b.png
 ---
