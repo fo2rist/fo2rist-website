@@ -1,9 +1,10 @@
 ---
 title: George Ymydykov
 bio: No information yet.
-avatar: /images/profile-01.jpeg
+avatar: "/images/george.jpeg"
 featured: true
 social:
-  - title: github
-    url: https://github.com
+- title: github
+  url: https://github.com
+
 ---
