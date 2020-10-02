@@ -35,7 +35,7 @@ fields:
   type: file
   config:
     maxSize: 250
-  label: Hero Image
+  label: Image
 - name: authors
   type: tag_list
   default: []
