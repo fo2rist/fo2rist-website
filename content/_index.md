@@ -1,6 +1,6 @@
 ---
 hero:
-  heading: fo2rist & T-Kittens.
+  heading: 
   maxWidthPX: 652
 seo:
   image: /images/t-kittens_b.png
