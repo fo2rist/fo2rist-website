@@ -61,7 +61,7 @@ Add a similar file to your content directory and Front Matter example.
 title: Dmitry Sitnikov
 bio: |
   Written by You. This is where your author bio lives.
-avatar: /images/dennis-brotzky.jpg
+avatar: /images/dima.jpeg
 featured: true
 social:
   - title: github
