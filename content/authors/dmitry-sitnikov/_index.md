@@ -2,6 +2,7 @@
 title: Dmitry Sitnikov
 bio: Software developer. ML enthusiast. Podcast host.
 avatar: "/images/dima.jpeg"
+hero: "/images/dima.jpeg"
 featured: true
 social:
 - title: github
