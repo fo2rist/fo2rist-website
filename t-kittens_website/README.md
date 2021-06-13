@@ -1,15 +1,11 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d7a76aea-fa65-4f15-bf40-f03f31ff21de/deploy-status)](https://app.netlify.com/sites/fo2rist/deploys)
 
-# fo2rist.com site based on Hugo Novela Forestry Starter
+# t-kittens.fo2rist.com site
 
+Originally based on based on Hugo Novela Forestry Starter
 ## Prerequisites
 
 - Hugo > 0.55.0
-
-## Content Management
-
-This project has been pre-configured to work with [Forestry](https://forestry.io), just import your repository ✨. \
-Any changes you make will be commited back to the repo, and deployed if you're using Netlify.
 
 ## Deployment and hosting with Netlify
 
@@ -90,7 +86,6 @@ It uses [formspree.io](//formspree.io/) as proxy to send the actual email. Each 
 ```
 {{< subscribe email="your@email.com" >}}
 ```
-
 
 ## LICENSE
 

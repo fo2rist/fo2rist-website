@@ -3,6 +3,6 @@
 My personal non-engineering projects: blog, podcast.
 
 **Subfolders**:
-- `t-kittens_website` - t-kittens.fo2rist.com
+- [`t-kittens_website`](./t-kittens_website/README.md) - [t-kittens.fo2rist.com](t-kittens.fo2rist.com)
 
-The rest of fo2rist.com is not self-hosted and linked to the 3rd party services like medium instead.
+The rest of [fo2rist.com](fo2rist.com) is not self-hosted and linked to the 3rd party services like medium instead.
