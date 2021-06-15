@@ -1,0 +1,176 @@
+baseURL = "https://t-kittens.fo2rist.com"
+languageCode = "ru-ru"
+title = "Техно-котики"
+theme = "hugo-future-imperfect-slim"
+
+paginate                = 10
+disqusShortname         = ""
+googleAnalytics         = ""
+pluralizeListTitles     = false
+disableLanguages        = []
+
+[markup.goldmark.renderer]
+  unsafe                = true
+
+[outputs]
+  home                  = ["html", "json", "rss"]
+
+[params]
+  enableCDN             = false
+  cssFiles              = ["default"]
+  jsFiles               = ["default"]
+  highlightjs           = true
+  highlightjsTheme      = ""
+  highlightjsLang       = []
+  viewMorePostsLink     = "/"
+  readingTime           = false
+  imageStretch          = ""
+  removeBlur            = false
+  socialShare           = ["facebook", "twitter"]
+  summary_length        = 1000
+  hideEmptyStats        = true
+
+  [params.meta]
+    description         = ""
+    author              = ""
+    favicon             = true
+    svg                 = false
+    faviconVersion      = "1"
+    msColor             = "#ffffff"
+    iOSColor            = "#ffffff"
+
+  [params.header]
+    navbarTitle         = "Техно-котики"
+    dynamicTitles       = true
+    searchMenu          = true
+    shareMenu           = true
+    languageMenu        = false
+
+  [params.intro]
+    header                = "Техно-котики"
+    paragraph             = "Подкаст о новых технологиях и научных открытиях.<br/><a href='https://anchor.fm/t-kittens'>>>> Подписаться <<<</a>"
+    rssIntro              = false
+    socialIntro           = true
+    hideWhenSingleColumn  = false
+    alwaysOnHomepage      = false
+
+    [params.intro.pic]
+      src                 = "images/t-kittens_w.png"
+      shape               = "circle"
+      width               = ""
+      alt                 = "T-Kittens"
+
+  [params.sidebar]
+    about               = "Дима, Жора, Юля — инженеры, аналитики, экологи, энтузиасты науки"
+    postAmount          = 0
+    categories          = false
+    categoriesByCount   = true
+
+  [params.footer]
+    rssFooter           = false
+    socialFooter        = false
+
+  [params.utterances]
+    enabled             = false
+    repo                = ""
+    issueTerm           = "pathname"
+    issueNumber         = ""
+    label               = "" 
+    theme               = "github-light"
+
+  [params.staticman]
+    enabled             = true
+    api                 = ""  # No Trailing Slash
+    gitProvider         = ""
+    username            = ""
+    repo                = ""
+    branch              = ""
+
+    [params.staticman.recaptcha]
+      siteKey           = ""
+      encryptedKey      = ""
+
+[menu]
+
+  # [[menu.main]]
+  #   name              = ""
+  #   identifier        = "home"
+  #   url               = ""
+  #   pre               = "<i class='fa fa-home'></i>"
+  #   weight            = 1
+
+  [[menu.main]]
+    name              = "Слушать онлайн"
+    identifier        = "listen_on"
+    url               = "listen_on"
+    pre               = "<i class='fas fa-microphone-alt'></i>"
+    weight            = 2
+
+#   [[menu.main]]
+#     name              = "Категории"
+#     identifier        = "categories"
+#     url               = "categories"
+#     pre               = "<i class='fas fa-sitemap'></i>"
+#     weight            = 3
+
+  [[menu.main]]
+    name              = "О нас"
+    identifier        = "about"
+    url               = "about"
+    pre               = "<i class='far fa-id-card'></i>"
+    weight            = 4
+
+# [Languages]
+
+#   [Languages.en]
+#     LanguageCode        = "en"
+#     LanguageName        = "English"
+#     weight              = 1
+
+#   [Languages.ru]
+#     LanguageCode        = "ru"
+#     LanguageName        = "Русский"
+#     title               = "Техно-котики"
+#     description         = "Cайт подкаста о науке и технике Техно-котики"
+#     weight              = 2
+
+#     [[Languages.ru.menu.main]]
+#       name              = "Главная"
+#       identifier        = "home"
+#       url               = ""
+#       pre               = "<i class='fas fa-home'></i>"
+#       weight            = 1
+
+#     [[Languages.ru.menu.main]]
+#       name              = "О нас"
+#       identifier        = "about"
+#       url               = "about"
+#       pre               = "<i class='far fa-id-card'></i>"
+#       weight            = 2
+
+#     [[Languages.ru.menu.main]]
+#       name              = "Все выпуски"
+#       identifier        = "blog"
+#       url               = "blog"
+#       pre               = "<i class='far fa-newspaper'></i>"
+#       weight            = 3
+
+#     [[Languages.ru.menu.main]]
+#       name              = "Категории"
+#       identifier        = "categories"
+#       url               = "categories"
+#       pre               = "<i class='fas fa-sitemap'></i>"
+#       weight            = 5
+
+
+[social]
+  # Social networks & hosting icons
+  anchorfm              = "t-kittens"
+  facebook              = "tkittens"
+  twitter               = "t_kittens"
+  telegram              = "tkittens"
+  vk                    = "tkittens"
+  youtube               = ""
+  instagram             = ""
+  # Email
+  email                 = ""

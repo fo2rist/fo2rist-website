@@ -1,0 +1,3 @@
+[submodule "t-kittens_website_2/themes/hugo-future-imperfect-slim"]
+	path = t-kittens_website/themes/hugo-future-imperfect-slim
+	url = https://github.com/pacollins/hugo-future-imperfect-slim.git

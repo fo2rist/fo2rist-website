@@ -7,7 +7,7 @@ from podcast_utils import *
 
 #region metadata constants
 PODCAST_NAME = "Техно-котики"
-EPISODE_PREFIX = "Выпуск "
+EPISODE_PREFIX = "#"
 #endregion
 
 # Sanity check
@@ -15,7 +15,7 @@ assert_tkittens_podcast_folder()
 
 # Locate recordings
 last_episode_number = get_last_episode_number()
-for episode_number in range(17, last_episode_number+1):
+for episode_number in range(0, last_episode_number+1):
     print(f"Creating {episode_number}")
     episode_folder = build_episode_folder_name(episode_number)
 
@@ -42,19 +42,19 @@ for episode_number in range(17, last_episode_number+1):
             if public_link_match := public_link_regex.match(line):
                 public_link = public_link_match[1].replace("/episodes/", "/embed/episodes/")
 
-    # Title - episode number
-    episode_title = f"{PODCAST_NAME} — {EPISODE_PREFIX}{episode_number}"
     # Comment - short list of themes
-    episode_comment = ", ".join(briefs)
+    episode_comment = (", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))).replace('"', '＂') # fullsize quote is used to circumvent hugo bug with quotes parsing
+    # Title - episode number
+    episode_title = f"{EPISODE_PREFIX}{episode_number} | {episode_comment}"
     # Description - long list of themes
-    episode_description = "\n".join([f"— {d}\n" for d in descriptions])
+    episode_description = "\n<br/><br/>".join([f"— {d}" for d in descriptions])
 
     post_content = f"""
 ---
-title: {episode_title}
+title: '{episode_title}'
 date: {date}
 hero: /images/t-kittens_w_wide.png
-excerpt: {episode_comment}
+excerpt: '{episode_comment}'
 timeToRead: 0
 authors:
   - Dmitry Sitnikov
@@ -67,5 +67,5 @@ authors:
 {{{{< anchor-episode-large "{public_link}" >}}}}
 """
 
-    with open(join("/Users/WeezLabs/Develop/fo2rist-website/content/post/", f"{date}_episode_{episode_number}.md"), "w") as post_file:
+    with open(join("/Users/WeezLabs/Develop/fo2rist-website/t-kittens_website/content/blog/", f"{date}_episode_{episode_number}.md"), "w") as post_file:
         post_file.write(post_content)

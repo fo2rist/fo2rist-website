@@ -1,0 +1,83 @@
+# Format
+[date_format]
+  other = "2006.2.01"
+
+# Sidebar
+[recent_posts]
+  other = "Недавние выпуски"
+[see_more]
+  other = "Все выпуски"
+[learn_more]
+  other = "Подробнее"
+[attribution]
+  other = "Исходники: <a href='//github.com/fo2rist/fo2rist-website' target='_blank' rel='noopener' title='GitHub' class='fab fa-github'> fo2rist-website</a><br/>Тема: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Движок <a href='https://gohugo.io/' title='{{ .Site.Hugo.Version }}' target='_blank' rel='noopener'>Hugo</a>"
+
+# Sections
+[about]
+  other = "О нас"
+[contact]
+  other = "Связаться"
+[contact_replies]
+  one = "Отвечаем в течении 1 часа."
+  other = "Отвечаем в течении {{ .Count }} часов."
+[blog]
+  other = "Выпуски"
+[categories]
+  one = "Категория"
+  other = "Категории"
+[tags]
+  one = "Тэг"
+  other = "Tэги"
+[next_page]
+  other = "Следующая страница"
+[previous_page]
+  other = "Предыдущая страница"
+
+# Post
+[reading_time]
+  one = "1-Мин. чтения"
+  other = "{{ .Count }}-Мин. чтения"
+[read_more]
+  other = "Слушать на сайте"
+[share_post]
+  other = "Поделиться"
+[check_out]
+  other = "Check out this post by"
+[say_something]
+  other = "Скажите нам что-нибудь"
+[comments]
+  other = "Комментарии"
+[nothing_yet]
+  other = "Пока ничего."
+[reply]
+  other = "Ответить"
+[error_msg]
+  other = "Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again."
+[success_msg]
+  other = "Thanks for your comment! It will be shown on the site once it has been approved."
+
+# Form
+[form_name]
+  other = "Ваше имя"
+[form_email]
+  other = "Ваш email"
+[form_website]
+  other = "Ваш сайт"
+[form_subject]
+  other = "Тема"
+[form_body]
+  other = "Сообщение"
+[reset]
+  other = "Сбросить"
+[submitted]
+  other = "Отправлено"
+[submit]
+  other = "Отправить"
+
+# 404
+[404_pagenotfound]
+  other = "Не найдено"
+[404_sorry]
+  other = "Упс, нет такой страницы у нас."
+[404_back]
+  other = "Назад"
