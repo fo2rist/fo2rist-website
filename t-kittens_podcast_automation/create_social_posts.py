@@ -43,7 +43,7 @@ for episode_number in range(0, last_episode_number+1):
                 public_link = public_link_match[1].replace("/episodes/", "/embed/episodes/")
 
     # Comment - short list of themes
-    episode_comment = ", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))
+    episode_comment = (", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))).replace('"', '＂') # fullsize quote is used to circumvent hugo bug with quotes parsing
     # Title - episode number
     episode_title = f"{EPISODE_PREFIX}{episode_number} | {episode_comment}"
     # Description - long list of themes
