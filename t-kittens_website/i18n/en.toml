@@ -10,7 +10,7 @@
 [learn_more]
   other = "Подробнее"
 [attribution]
-  other = "Тема: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Движок <a href='https://gohugo.io/' title='{{ .Site.Hugo.Version }}' target='_blank' rel='noopener'>Hugo</a>"
+  other = "Исходники: <a href='//github.com/fo2rist/fo2rist-website' target='_blank' rel='noopener' title='GitHub' class='fab fa-github'> fo2rist-website</a><br/>Тема: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Движок <a href='https://gohugo.io/' title='{{ .Site.Hugo.Version }}' target='_blank' rel='noopener'>Hugo</a>"
 
 # Sections
 [about]

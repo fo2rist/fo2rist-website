@@ -165,7 +165,7 @@ disableLanguages        = []
 
 [social]
   # Coding Communities
-  github                = "fo2rist/fo2rist-website"
+  github                = ""
   gitlab                = ""
   stackoverflow         = "" # User Number
   bitbucket             = ""
@@ -195,17 +195,18 @@ disableLanguages        = []
   whatsapp              = "" # WhatsApp Number
   instagram             = ""
   tumblr                = ""
-  twitter               = "t-kittens"
+  twitter               = "t_kittens"
   strava                = ""
   skype                 = ""
   snapchat              = ""
   pinterest             = ""
-  telegram              = "t-kittens"
+  telegram              = "tkittens"
   vine                  = ""
   googlescholar         = ""
   orcid                 = ""
   researchgate          = ""
   keybase               = ""
   mastodon              = ""
+  vk                    = "tkittens"
   # Email
   email                 = ""
