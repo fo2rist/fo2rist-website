@@ -103,7 +103,7 @@ disableLanguages        = []
     name              = "Слушать онлайн"
     identifier        = "listen_on"
     url               = "listen_on"
-    pre               = "<i class='far fa-music'></i>"
+    pre               = "<i class='fas fa-microphone-alt'></i>"
     weight            = 2
 
 #   [[menu.main]]
@@ -164,49 +164,13 @@ disableLanguages        = []
 
 
 [social]
-  # Coding Communities
-  github                = ""
-  gitlab                = ""
-  stackoverflow         = "" # User Number
-  bitbucket             = ""
-  jsfiddle              = ""
-  codepen               = ""
-  # Visual Art Communities
-  deviantart            = ""
-  flickr                = ""
-  behance               = ""
-  dribbble              = ""
-  # Publishing Communities
-  wordpress             = ""
-  medium                = ""
-  # Professional/Business Oriented Communities
-  linkedin              = ""
-  linkedin_company      = ""
-  foursquare            = ""
-  xing                  = ""
-  slideshare            = ""
-  # Social Networks
+  # Social networks & hosting icons
+  anchorfm              = "t-kittens"
   facebook              = "tkittens"
-  googleplus            = ""
-  reddit                = ""
-  quora                 = ""
-  youtube               = ""
-  vimeo                 = ""
-  whatsapp              = "" # WhatsApp Number
-  instagram             = ""
-  tumblr                = ""
   twitter               = "t_kittens"
-  strava                = ""
-  skype                 = ""
-  snapchat              = ""
-  pinterest             = ""
   telegram              = "tkittens"
-  vine                  = ""
-  googlescholar         = ""
-  orcid                 = ""
-  researchgate          = ""
-  keybase               = ""
-  mastodon              = ""
   vk                    = "tkittens"
+  youtube               = ""
+  instagram             = ""
   # Email
   email                 = ""
