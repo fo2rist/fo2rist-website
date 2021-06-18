@@ -15,7 +15,7 @@ assert_tkittens_podcast_folder()
 
 # Locate recordings
 last_episode_number = get_last_episode_number()
-for episode_number in range(0, last_episode_number+1):
+for episode_number in range(last_episode_number, last_episode_number+1):
     print(f"Creating {episode_number}")
     episode_folder = build_episode_folder_name(episode_number)
 
