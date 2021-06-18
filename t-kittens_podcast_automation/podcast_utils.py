@@ -78,7 +78,7 @@ def get_recording_folder_path():
     episode_number = get_last_episode_number()
     recording_root_folder = join(DRIVE_ZENCASTR_RECORDINGS_FOLDER, ZENCASTR_EPISODE_PREFIX + str(episode_number))
     recording_subfolders = os.listdir(recording_root_folder)
-    if (len(recording_subfolders)):
+    if (len(recording_subfolders) == 0):
         raise FileNotFoundError(f"Recordings folder '{recording_root_folder}' is empty")
     # Get last sub-folder, as Zencaster creates multiple when the recording is aborted and restarted
     last_recording_folder_name = list(filter(lambda s: s.startswith(RECORDING_FOLDER_PREFIX), recording_subfolders))[-1]
