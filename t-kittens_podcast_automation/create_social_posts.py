@@ -47,7 +47,7 @@ for episode_number in range(last_episode_number, last_episode_number+1):
     # Title - episode number
     episode_title = f"{EPISODE_PREFIX}{episode_number} | {episode_comment}"
     # Description - long list of themes
-    episode_description = "\n<br/><br/>".join([f"— {d}" for d in descriptions])
+    episode_description = "<br/>\n".join([f"— {d}" for d in descriptions])
 
     post_content = f"""
 ---
