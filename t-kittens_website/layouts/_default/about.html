@@ -10,22 +10,28 @@
       {{ .Content }}
     </div>
   </article>
-  <p>
+
   {{ with .Site.GetPage "section" "authors" }}
   {{ range .Pages }}
-  <article>
-    <div class="post">
-      <h2>{{.Title}}</h2>
-      {{ .Render "featured"}}
-      <div class="content">
-        {{ .Content }}
+  <article class="post">
+    <header>
+      <div class="title">
+        <h2>{{.Title}}</h2>
       </div>
-      <footer>
-        {{ .Render "stats" }}
-      </footer>
-    </div>
+      <div class="meta">
+        <h2><ul class="socnet-icons">
+          {{ partial "item-socnet-icons" .Params.social }}
+        </ul></h2>
+      </div>
+    </header>
+    {{ .Render "featured"}}
+    <div class="content">
+      {{ .Content }}
+    </div>  
+    <footer>
+      {{ .Render "stats" }}
+    </footer>
   </article>
   {{ end }}
   {{ end }}
-  </p>
 {{ end }}
