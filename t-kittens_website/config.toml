@@ -56,7 +56,7 @@ pluralizeListTitles     = false
     alwaysOnHomepage      = false
 
     [params.intro.pic]
-      src                 = "images/t-kittens_w.png"
+      src                 = "img/t-kittens_w.png"
       shape               = "circle"
       width               = ""
       alt                 = "T-Kittens"

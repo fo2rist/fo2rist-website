@@ -1,8 +1,7 @@
 ---
 title: Жора Ымыдыков
-avatar: "/images/george.jpeg"
-hero: "/images/george.jpeg"
-featured: true
+avatar: "img/george.jpeg"
+featured: "george.jpeg"
 social:
 - title: github
   url: https://github.com/YGeorge

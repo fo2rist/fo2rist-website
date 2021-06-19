@@ -1,8 +1,7 @@
 ---
 title: Юля Тертерян
-avatar: "/images/yulia.jpeg"
-hero: "/images/yulia.jpeg"
-featured: true
+avatar: "img/yulia.jpeg"
+featured: "yulia.jpeg"
 social:
 - title: vk
   url: https://vk.com/y.bochkareva

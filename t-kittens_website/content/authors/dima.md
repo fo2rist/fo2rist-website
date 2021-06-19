@@ -1,7 +1,7 @@
 ---
 title: Дима Ситников
-avatar: "/images/dima.jpeg"
-featured: true
+avatar: "img/dima.jpeg"
+featured: "dima.jpeg"
 social:
 - title: github
   url: https://github.com/fo2rist
