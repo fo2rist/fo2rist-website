@@ -53,7 +53,6 @@ for episode_number in range(last_episode_number, last_episode_number+1):
 ---
 title: '{episode_title}'
 date: {date}
-hero: /images/t-kittens_w_wide.png
 excerpt: '{episode_comment}'
 timeToRead: 0
 authors:
