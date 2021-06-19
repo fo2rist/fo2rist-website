@@ -1,8 +1,6 @@
 ---
-title: Dmitry Sitnikov
-bio: Software developer. ML enthusiast. Podcast host.
+title: Дима Ситников
 avatar: "/images/dima.jpeg"
-hero: "/images/dima.jpeg"
 featured: true
 social:
 - title: github
@@ -12,3 +10,4 @@ social:
 - title: vk
   url: https://vk.com/fo2rist
 ---
+Программист. Энтузиаст ИИ. Хост подкаста.

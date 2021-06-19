@@ -1,6 +1,5 @@
 ---
-title: George Ymydykov
-bio: Engineering manager. iOS developer. Podcast host.
+title: Жора Ымыдыков
 avatar: "/images/george.jpeg"
 hero: "/images/george.jpeg"
 featured: true
@@ -13,3 +12,4 @@ social:
   url: https://vk.com/ygeorge
 
 ---
+Менеджер. Инженер. Хост подкаста.
