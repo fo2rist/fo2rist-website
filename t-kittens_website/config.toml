@@ -121,6 +121,14 @@ pluralizeListTitles     = false
     pre               = "<i class='far fa-id-card'></i>"
     weight            = 4
 
+[Languages]
+  [Languages.ru]
+    languageName = "Russian"
+    weight = 1
+
+  [Languages.en]
+    languageName = "English"
+    weight = 2
 
 [social]
   # Social networks & hosting icons
