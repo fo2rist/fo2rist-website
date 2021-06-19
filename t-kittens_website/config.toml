@@ -3,11 +3,12 @@ languageCode = "ru-ru"
 title = "Техно-котики"
 theme = "hugo-future-imperfect-slim"
 
+defaultContentLanguage = "ru"
+disableLanguages        = []
 paginate                = 10
 disqusShortname         = ""
 googleAnalytics         = ""
 pluralizeListTitles     = false
-disableLanguages        = []
 
 [markup.goldmark.renderer]
   unsafe                = true
@@ -119,48 +120,6 @@ disableLanguages        = []
     url               = "about"
     pre               = "<i class='far fa-id-card'></i>"
     weight            = 4
-
-# [Languages]
-
-#   [Languages.en]
-#     LanguageCode        = "en"
-#     LanguageName        = "English"
-#     weight              = 1
-
-#   [Languages.ru]
-#     LanguageCode        = "ru"
-#     LanguageName        = "Русский"
-#     title               = "Техно-котики"
-#     description         = "Cайт подкаста о науке и технике Техно-котики"
-#     weight              = 2
-
-#     [[Languages.ru.menu.main]]
-#       name              = "Главная"
-#       identifier        = "home"
-#       url               = ""
-#       pre               = "<i class='fas fa-home'></i>"
-#       weight            = 1
-
-#     [[Languages.ru.menu.main]]
-#       name              = "О нас"
-#       identifier        = "about"
-#       url               = "about"
-#       pre               = "<i class='far fa-id-card'></i>"
-#       weight            = 2
-
-#     [[Languages.ru.menu.main]]
-#       name              = "Все выпуски"
-#       identifier        = "blog"
-#       url               = "blog"
-#       pre               = "<i class='far fa-newspaper'></i>"
-#       weight            = 3
-
-#     [[Languages.ru.menu.main]]
-#       name              = "Категории"
-#       identifier        = "categories"
-#       url               = "categories"
-#       pre               = "<i class='fas fa-sitemap'></i>"
-#       weight            = 5
 
 
 [social]
