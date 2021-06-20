@@ -62,6 +62,10 @@ def build_episode_folder_name(number):
     """Get name of the episode's folder by number"""
     return EPISODE_FOLDER_PREFIX + str(number)
 
+def build_episode_base_file_name(number):
+    """Get base name without extension of files production pipeline will generate"""
+    return f"{PRODUCTION_FILE_PREFIX} {number}{PRODUCTION_FILE_SUFFIX}"
+
 def get_last_episode_folder_name():
     """Get name of the last episode's folder"""
     return build_episode_folder_name(get_last_episode_number())

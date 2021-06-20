@@ -9,14 +9,17 @@ from podcast_utils import *
 EPISODE_PREFIX = "#"
 #endregion
 #region website fonders config
-WEBSITE_ROOT_FOLDER = "/Users/WeezLabs/Develop/fo2rist-website/t-kittens_website/t-kittens_website"
+WEBSITE_ROOT_FOLDER = "/Users/WeezLabs/Develop/fo2rist-website/t-kittens_website"
 WEBSITE_CONTENT_FOLDER = join(WEBSITE_ROOT_FOLDER, "content/blog/")
 WEBSITE_DATA_FOLDER = join(WEBSITE_ROOT_FOLDER, "data/subtitles/")
 #endregion 
 
-def generate_posts_for_blog(from_episode, until_episode):
+def build_post_file_name(date, number, extension):
+    return f"{date}_episode_{number}.{extension}"
+
+def generate_content_for_blog(from_episode, until_episode):
     for episode_number in range(from_episode, until_episode):
-        print(f"Creating post #{episode_number}")
+        print(f"Generating post #{episode_number}")
         episode_folder = build_episode_folder_name(episode_number)
 
         # Fetch data parts (description, timings, links)
@@ -42,14 +45,20 @@ def generate_posts_for_blog(from_episode, until_episode):
                 if public_link_match := public_link_regex.match(line):
                     public_link = public_link_match[1].replace("/episodes/", "/embed/episodes/")
 
-        # Comment - short list of themes
-        episode_comment = (", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))).replace('"', '＂') # fullsize quote is used to circumvent hugo bug with quotes parsing
-        # Title - episode number
-        episode_title = f"{EPISODE_PREFIX}{episode_number} | {episode_comment}"
-        # Description - long list of themes
-        episode_description = "<br/>\n".join([f"— {d}" for d in descriptions])
+        generate_content_for_episode(date, episode_number, briefs, descriptions, public_link)
+        generate_subtitles_for_episode(date, episode_number)
+        
+    
+def generate_content_for_episode(date, episode_number, briefs, descriptions, public_link):
+    print(" - Creating content")
+    # Comment - short list of themes
+    episode_comment = (", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))).replace('"', '＂') # fullsize quote is used to circumvent hugo bug with quotes parsing
+    # Title - episode number
+    episode_title = f"{EPISODE_PREFIX}{episode_number} | {episode_comment}"
+    # Description - long list of themes
+    episode_description = "<br/>\n".join([f"— {d}" for d in descriptions])
 
-        post_content = f"""
+    post_content = f"""
 ---
 title: '{episode_title}'
 date: {date}
@@ -65,10 +74,21 @@ authors:
 
 {{{{< anchor-episode-large "{public_link}" >}}}}
 """
+    with open(join(WEBSITE_CONTENT_FOLDER, build_post_file_name(date, episode_number, "md")), "w") as post_file:
+        post_file.write(post_content)
 
-        with open(join("/Users/WeezLabs/Develop/fo2rist-website/t-kittens_website/content/blog/", f"{date}_episode_{episode_number}.md"), "w") as post_file:
-            post_file.write(post_content)
 
+def generate_subtitles_for_episode(date, episode_number):
+    def sanitize(string):
+        return string
+    
+    print(" - Creating subtitles")
+    episode_folder = build_episode_folder_name(episode_number)
+    subtitles_file_file = build_episode_base_file_name(episode_number) + ".json"
+    with open(join(episode_folder, subtitles_file_file)) as source_file:
+        with open(join(WEBSITE_DATA_FOLDER, build_post_file_name(date, episode_number, "json")), "w") as target_file:
+            for line in source_file:
+                target_file.writelines(sanitize(line))
 
 if __name__ == "__main__":
     # Sanity check
@@ -76,4 +96,4 @@ if __name__ == "__main__":
     # Locate recordings
     last_episode_number = get_last_episode_number()
     
-    generate_posts_for_blog(from_episode = last_episode_number, until_episode = last_episode_number + 1)
+    generate_content_for_blog(from_episode = last_episode_number, until_episode = last_episode_number + 1)

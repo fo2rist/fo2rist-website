@@ -127,7 +127,7 @@ production_json = f"""{{
         }},
         "chapters": {chapters_json},
         "multi_input_files": [{files_json}],
-        "output_basename": "{PRODUCTION_FILE_PREFIX} {episode_number}{PRODUCTION_FILE_SUFFIX}",
+        "output_basename": "{build_episode_base_file_name(episode_number)}",
         "is_multitrack": true
     }}"""
 
