@@ -116,8 +116,8 @@ pluralizeListTitles     = false
 
   [[menu.main]]
     name              = "О нас"
-    identifier        = "about"
-    url               = "about"
+    identifier        = "authors"
+    url               = "authors"
     pre               = "<i class='far fa-id-card'></i>"
     weight            = 4
 
