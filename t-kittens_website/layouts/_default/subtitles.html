@@ -1,14 +1,22 @@
 {{ $subtitles := index .Site.Data.subtitles .File.BaseFileName }}
 {{ if $subtitles }}
-    <div class="post">
-    <h3>Расшифровка</h3>
-    {{ range $subtitles }}
-        {{ $startTime := time (int (math.Round .start)) }}
-        {{ if .newpara }}
-            <h5> {{ .speaker }} </h5>
-            <span class='comment-author'>{{ $startTime.UTC.Format "0:04:05" }}</span>
-        {{ end }}
-        {{ .text }}
+    <!-- Generate authors map from authors pages -->
+    {{ $authorsMap := dict }}
+    {{ range (.Site.GetPage "/authors").Pages }}
+        {{ $authorId := .File.BaseFileName }}
+        {{ $authorName := .Params.shortname }}
+        {{ $authorsMap = merge $authorsMap (dict $authorId $authorName) }}
     {{ end }}
+    
+    <div class="post">
+        <h3>Расшифровка</h3>
+        {{ range $subtitles }}
+            {{ $startTime := time (int (math.Round .start)) }}
+            {{ if .newpara }}
+                <h5> {{ default .speaker (index $authorsMap (lower .speaker)) }} </h5>
+                <span class='comment-author'>{{ $startTime.UTC.Format "0:04:05" }}</span>
+            {{ end }}
+            {{ .text }}
+        {{ end }}
     </div>
 {{ end }}

@@ -3,6 +3,8 @@ title: Дима Ситников
 date: 0000-07-29
 avatar: "img/dima.jpeg"
 featured: "dima.jpeg"
+
+shortname: Дима
 social:
   github: fo2rist
   twitter: fo2rist
