@@ -6,6 +6,9 @@ from os.path import join
 
 #region metadata constants
 PODCAST_NAME = "Техно-котики"
+HOST_DIMA = "Dima"
+HOST_GEORGE = "George"
+HOST_YULIA = "Yulia"
 #endregion
 
 #region folders config

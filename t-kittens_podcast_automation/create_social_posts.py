@@ -80,15 +80,19 @@ authors:
 
 def generate_subtitles_for_episode(date, episode_number):
     def sanitize(string):
-        return string
+        # google's voice recognition often makes this type of mistake
+        return re.sub(r"наркотик", "Техно-котик", string, flags=re.IGNORECASE)
     
     print(" - Creating subtitles")
     episode_folder = build_episode_folder_name(episode_number)
     subtitles_file_file = build_episode_base_file_name(episode_number) + ".json"
-    with open(join(episode_folder, subtitles_file_file)) as source_file:
-        with open(join(WEBSITE_DATA_FOLDER, build_post_file_name(date, episode_number, "json")), "w") as target_file:
-            for line in source_file:
-                target_file.writelines(sanitize(line))
+    try:
+        with open(join(episode_folder, subtitles_file_file)) as source_file:
+            with open(join(WEBSITE_DATA_FOLDER, build_post_file_name(date, episode_number, "json")), "w") as target_file:
+                for line in source_file:
+                    target_file.writelines(sanitize(line))
+    except IOError as exc:
+        print(f" ! subtitles not created: {exc}")
 
 if __name__ == "__main__":
     # Sanity check

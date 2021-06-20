@@ -100,9 +100,9 @@ chapters_json = "[\n" + ",\n".join(chapters_for_metadata) + "\n]"
 # Create production JSON
 files_json_list = []
 for file_name in recording_files:
-    track_id = "Dima" if "fo2" in file_name else\
-               "Yulia" if "yul" in file_name else\
-               "George" if "geo" in file_name else\
+    track_id = HOST_DIMA if "fo2" in file_name else\
+               HOST_YULIA if "yul" in file_name else\
+               HOST_GEORGE if "geo" in file_name else\
                re.sub(r".*--.*--", "", file_name).replace(".mp3", "")
     files_json_list.append(
         f"""{{
