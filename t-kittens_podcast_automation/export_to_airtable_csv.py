@@ -6,7 +6,6 @@ from os.path import join
 from podcast_utils import *
 
 #region metadata constants
-PODCAST_NAME = "Техно-котики"
 EPISODE_PREFIX = "Выпуск "
 #endregion
 

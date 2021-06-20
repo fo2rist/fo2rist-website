@@ -19,7 +19,6 @@ GOOGLE_DRIVE_SERVICE_ID = "uKrCoE47igevybFq73HrQE"
 #endregion
 
 #region metadata constants
-PODCAST_NAME = "Техно-котики"
 EPISODE_PREFIX = "Выпуск "
 #endregion
 

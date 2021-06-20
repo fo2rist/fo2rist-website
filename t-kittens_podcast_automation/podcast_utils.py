@@ -4,6 +4,10 @@
 import os
 from os.path import join
 
+#region metadata constants
+PODCAST_NAME = "Техно-котики"
+#endregion
+
 #region folders config
 
 # prefix of final production folder
