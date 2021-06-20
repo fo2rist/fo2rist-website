@@ -1,0 +1,14 @@
+{{ $subtitles := index .Site.Data.subtitles .File.BaseFileName }}
+{{ if $subtitles }}
+    <div class="post">
+    <h3>Расшифровка</h3>
+    {{ range $subtitles }}
+        {{ $startTime := time (int (math.Round .start)) }}
+        {{ if .newpara }}
+            <h5> {{ .speaker }} </h5>
+            <span class='comment-author'>{{ $startTime.UTC.Format "0:04:05" }}</span>
+        {{ end }}
+        {{ .text }}
+    {{ end }}
+    </div>
+{{ end }}
