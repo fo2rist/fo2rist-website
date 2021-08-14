@@ -70,5 +70,5 @@ os.system(add_intro_and_bg_command)
 
 os.system("open 'https://anchor.fm/dashboard/episode/new'")
 os.system(f"open '{last_episode_folder}'")
-# TODO open description file as well
+os.system(f"open '{join(last_episode_folder, POST_SOCIAL_FILE_NAME)}'")
 # TODO run blog post creation or make it a step
