@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from datetime import date
+from datetime import date, timedelta
 import os
 from podcast_utils import *
 
@@ -21,12 +21,14 @@ new_episode_folder = build_episode_folder_name(new_episode_number)
 os.makedirs(new_episode_folder, exist_ok=False)
 # Put description from template to that folder
 full_description_file_name = new_episode_folder + "/" + DESCRIPTION_FILE_NAME
+tomorrow = date.today() + timedelta(days=1)
 with open(DESCRIPTION_TEMPLATE_FILE_NAME, "r") as template_file:
     with open(full_description_file_name, "w") as description_file:
         for line in template_file:
             description_file.write(
                 line.replace("$EPISODE_N", str(new_episode_number))
-                    .replace("$RECORDING_DATE", date.today().strftime("%Y-%m-%d"))
+                    .replace("$RECORDING_INTRO_DATE", tomorrow.strftime("%d %b %Y"))
+                    .replace("$RECORDING_DATE", tomorrow.strftime("%Y-%m-%d"))
             )
 
 print(f"'{new_episode_folder}' created")
