@@ -72,3 +72,4 @@ os.system("open 'https://anchor.fm/dashboard/episode/new'")
 os.system(f"open '{last_episode_folder}'")
 os.system(f"open '{join(last_episode_folder, POST_SOCIAL_FILE_NAME)}'")
 # REMINDER: add origin link and run blog post creation
+# TODO Make social post the next step after publishing to Anchor.fm, use links to t-kittens website in generated template, keep the link to anchor on the site only
