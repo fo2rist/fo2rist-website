@@ -8,7 +8,7 @@ from os.path import join
 #region metadata constants
 date_regex = re.compile(r"DATE: (\d\d\d\d-\d\d?-\d\d?)")
 timings_regex = re.compile(r"(\d?\d:\d\d) - (\S*)")
-links_regex = re.compile(r"LINKS_\d:\s+(.+)")
+links_regex = re.compile(r"LINKS_\d:\s*(.*)")
 theme_briefs_regex = re.compile(r"THEME_\d_SHORT:\s+(.+)")
 theme_descriptions_regex = re.compile(r"THEME_\d_FULL:\s+(.+)")
 public_link_regex = re.compile(r".*(https://anchor.fm/t-kittens/episodes.*)")
