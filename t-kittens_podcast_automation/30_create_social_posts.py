@@ -41,6 +41,7 @@ def generate_content_for_blog(from_episode, until_episode):
                 if description_match := theme_descriptions_regex.match(line):
                     descriptions.append(description_match[1])
         authors = list(map(lambda name: name.replace("Дима", HOST_FULL_DIMA).replace("Жора", HOST_FULL_GEORGE).replace("Юля", HOST_FULL_YULIA), authors))
+        authors = list(set(authors)) # remove duplicates
         authors.sort()
 
         public_link = ""
