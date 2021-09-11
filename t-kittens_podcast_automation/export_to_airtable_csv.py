@@ -30,13 +30,14 @@ for episode_number in range(0,11):
                 date = date_match[1]
             if timing_match := timings_regex.match(line):
                 timings.append(timing_match[1])
-                authors.append(timing_match[2].replace("Дима","Dima").replace("Жора","George").replace("Юля","Yulia"))
+                authors.append(timing_match[2])
             if link_match := links_regex.match(line):
                 links.append(list(filter(None, link_match[1].split(" "))))
             if brief_match := theme_briefs_regex.match(line):
                 briefs.append(brief_match[1])
             if description_match := theme_descriptions_regex.match(line):
                 descriptions.append(description_match[1])
+    authors = list(map(lambda name: name.replace("Дима", HOST_DIMA).replace("Жора", HOST_GEORGE).replace("Юля", HOST_YULIA), authors))
 
     public_link = ""
     with open(join(episode_folder, POST_SOCIAL_FILE_NAME)) as file:

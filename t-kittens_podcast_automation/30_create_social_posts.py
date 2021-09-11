@@ -32,14 +32,12 @@ def generate_content_for_blog(from_episode, until_episode):
                 if date_match := date_regex.match(line):
                     date = date_match[1]
                 if timing_match := timings_regex.match(line):
-                    authors.append(timing_match[2]
-                            .replace("Дима", HOST_FULL_DIMA)
-                            .replace("Жора", HOST_FULL_GEORGE)
-                            .replace("Юля", HOST_FULL_YULIA))
+                    authors.append(timing_match[2])
                 if brief_match := theme_briefs_regex.match(line):
                     briefs.append(brief_match[1])
                 if description_match := theme_descriptions_regex.match(line):
                     descriptions.append(description_match[1])
+        authors = list(map(lambda name: name.replace("Дима", HOST_FULL_DIMA).replace("Жора", HOST_FULL_GEORGE).replace("Юля", HOST_FULL_YULIA), authors))
         authors.sort()
 
         public_link = ""
