@@ -2,16 +2,30 @@
 # contains all common files/folders constant and utilities for episodes production
 
 import os
+import re
 from os.path import join
 
 #region metadata constants
+date_regex = re.compile(r"DATE: (\d\d\d\d-\d\d?-\d\d?)")
+timings_regex = re.compile(r"(\d?\d:\d\d) - (\S*)")
+links_regex = re.compile(r"LINKS_\d:\s+(.+)")
+theme_briefs_regex = re.compile(r"THEME_\d_SHORT:\s+(.+)")
+theme_descriptions_regex = re.compile(r"THEME_\d_FULL:\s+(.+)")
+public_link_regex = re.compile(r".*(https://anchor.fm/t-kittens/episodes.*)")
+
 PODCAST_NAME = "Техно-котики"
 HOST_DIMA = "Dima"
 HOST_GEORGE = "George"
 HOST_YULIA = "Yulia"
 #endregion
+#region social post constants
+HOST_FULL_DIMA = "Dmitry Sitnikov"
+HOST_FULL_GEORGE = "George Ymydykov"
+HOST_FULL_YULIA = "Yulia Terterian"
+GUEST = "Guest"
+#endregion
 
-#region folders config
+#region folders/files config
 
 # prefix of final production folder
 EPISODE_FOLDER_PREFIX = "Episode "

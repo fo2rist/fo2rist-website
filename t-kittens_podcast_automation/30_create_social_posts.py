@@ -23,9 +23,6 @@ def generate_content_for_blog(from_episode, until_episode):
         episode_folder = build_episode_folder_name(episode_number)
 
         # Fetch data parts (description, timings, links)
-        date_regex = re.compile(r"DATE: (\d\d\d\d-\d\d?-\d\d?)")
-        theme_briefs_regex = re.compile(r"THEME_\d_SHORT:\s*(.*)")
-        theme_descriptions_regex = re.compile(r"THEME_\d_FULL:\s*(.*)")
         date = ""
         briefs = []
         descriptions = []

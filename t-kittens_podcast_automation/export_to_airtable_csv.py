@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # Generates and prints episode data in CSV format to export to airtble
 # Only needed to restore airtable episodes table by preserved episode descriptions
-import re
 from os.path import join
 from podcast_utils import *
 
@@ -19,11 +18,6 @@ for episode_number in range(0,11):
     episode_folder = build_episode_folder_name(episode_number)
  
     # Fetch data parts (description, timings, links)
-    date_regex = re.compile(r"DATE: (\d\d\d\d-\d\d?-\d\d?)")
-    timings_regex = re.compile(r"(\d\d:\d\d) - (\S*)")
-    links_regex = re.compile(r"LINKS_\d:\s*(.*)")
-    theme_briefs_regex = re.compile(r"THEME_\d_SHORT:\s*(.*)")
-    theme_descriptions_regex = re.compile(r"THEME_\d_FULL:\s*(.*)")
     date = ""
     timings = []
     authors = []
@@ -44,7 +38,6 @@ for episode_number in range(0,11):
             if description_match := theme_descriptions_regex.match(line):
                 descriptions.append(description_match[1])
 
-    public_link_regex = re.compile(r"PLAYER LINK: (.*)")
     public_link = ""
     with open(join(episode_folder, POST_SOCIAL_FILE_NAME)) as file:
         for line in file:

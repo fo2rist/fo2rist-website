@@ -49,11 +49,6 @@ for file_name in recording_files:
         join(DRIVE_AUPHONIC_FOLDER, file_name))
 
 # Fetch data parts (description, timings, links)
-date_regex = re.compile(r"DATE: (\d\d\d\d-\d\d?-\d\d?)")
-timings_regex = re.compile(r"(\d?\d:\d\d) - .+")
-links_regex = re.compile(r"LINKS_\d:\s+(.*)")
-theme_briefs_regex = re.compile(r"THEME_\d_SHORT:\s+(.+)")
-theme_descriptions_regex = re.compile(r"THEME_\d_FULL:\s+(.+)")
 recording_date = ""
 timings = []
 links = []
