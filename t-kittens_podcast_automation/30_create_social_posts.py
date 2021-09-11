@@ -24,34 +24,42 @@ def generate_content_for_blog(from_episode, until_episode):
 
         # Fetch data parts (description, timings, links)
         date = ""
+        authors = []
         briefs = []
         descriptions = []
         with open(join(episode_folder, DESCRIPTION_FILE_NAME)) as file:
             for line in file:
                 if date_match := date_regex.match(line):
                     date = date_match[1]
+                if timing_match := timings_regex.match(line):
+                    authors.append(timing_match[2]
+                            .replace("Дима", HOST_FULL_DIMA)
+                            .replace("Жора", HOST_FULL_GEORGE)
+                            .replace("Юля", HOST_FULL_YULIA))
                 if brief_match := theme_briefs_regex.match(line):
                     briefs.append(brief_match[1])
                 if description_match := theme_descriptions_regex.match(line):
                     descriptions.append(description_match[1])
+        authors.sort()
 
-        public_link_regex = re.compile(r".*(https://anchor.fm/t-kittens/episodes.*)")
         public_link = ""
         with open(join(episode_folder, POST_SOCIAL_FILE_NAME)) as file:
             for line in file:
                 if public_link_match := public_link_regex.match(line):
                     public_link = public_link_match[1].replace("/episodes/", "/embed/episodes/")
 
-        generate_content_for_episode(date, episode_number, briefs, descriptions, public_link)
+        generate_content_for_episode(date, episode_number, authors, briefs, descriptions, public_link)
         generate_subtitles_for_episode(date, episode_number)
         
     
-def generate_content_for_episode(date, episode_number, briefs, descriptions, public_link):
+def generate_content_for_episode(date, episode_number, authors, briefs, descriptions, public_link):
     print(" - Creating content")
     # Comment - short list of themes
     episode_comment = (", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))).replace('"', '＂') # fullsize quote is used to circumvent hugo bug with quotes parsing
-    # Title - episode number
+    # Title - episode number + themes
     episode_title = f"{EPISODE_PREFIX}{episode_number} | {episode_comment}"
+    # Authors - mardown list of authors
+    episode_authors = "\n  - ".join(authors)
     # Description - long list of themes
     episode_description = "<br/>\n".join([f"— {d}" for d in descriptions])
 
@@ -62,9 +70,7 @@ date: {date}
 excerpt: '{episode_comment}'
 timeToRead: 0
 authors:
-  - Dmitry Sitnikov
-  - George Ymydykov
-  - Yulia Terterian
+  - {episode_authors}
 ---
 
 {episode_description}
