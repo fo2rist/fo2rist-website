@@ -25,6 +25,7 @@ def generate_content_for_blog(from_episode, until_episode):
         # Fetch data parts (description, timings, links)
         date = ""
         authors = []
+        links = []
         briefs = []
         descriptions = []
         with open(join(episode_folder, DESCRIPTION_FILE_NAME)) as file:
@@ -33,6 +34,8 @@ def generate_content_for_blog(from_episode, until_episode):
                     date = date_match[1]
                 if timing_match := timings_regex.match(line):
                     authors.append(timing_match[2])
+                if link_match := links_regex.match(line):
+                    links.append(list(link_match[1].split(" ")))
                 if brief_match := theme_briefs_regex.match(line):
                     briefs.append(brief_match[1])
                 if description_match := theme_descriptions_regex.match(line):
@@ -46,11 +49,11 @@ def generate_content_for_blog(from_episode, until_episode):
                 if public_link_match := public_link_regex.match(line):
                     public_link = public_link_match[1].replace("/episodes/", "/embed/episodes/")
 
-        generate_content_for_episode(date, episode_number, authors, briefs, descriptions, public_link)
+        generate_content_for_episode(date, episode_number, authors, links, briefs, descriptions, public_link)
         generate_subtitles_for_episode(date, episode_number)
         
     
-def generate_content_for_episode(date, episode_number, authors, briefs, descriptions, public_link):
+def generate_content_for_episode(date, episode_number, authors, links, briefs, descriptions, public_link):
     print(" - Creating content")
     # Comment - short list of themes
     episode_comment = (", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))).replace('"', '＂') # fullsize quote is used to circumvent hugo bug with quotes parsing
@@ -59,7 +62,16 @@ def generate_content_for_episode(date, episode_number, authors, briefs, descript
     # Authors - mardown list of authors
     episode_authors = "\n  - ".join(authors)
     # Description - long list of themes
-    episode_description = "<br/>\n".join([f"— {d}" for d in descriptions])
+    link_number = 1
+    abbreviated_links = []
+    for topic_links in links:
+        formatted_topic_links = []
+        for link in topic_links:
+            if  len(link) != 0: 
+                formatted_topic_links.append(f"[[{link_number}]({link})]")
+                link_number += 1
+        abbreviated_links.append(" ".join(formatted_topic_links))
+    episode_description = "<br/>\n".join([f"— {d} {l}" for (d,l) in zip(descriptions, abbreviated_links)])
 
     post_content = f"""
 ---
