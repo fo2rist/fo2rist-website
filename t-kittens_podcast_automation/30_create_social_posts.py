@@ -5,14 +5,15 @@ from datetime import date
 from os.path import join
 from podcast_utils import *
 
-#region metadata constants
-EPISODE_PREFIX = "#"
-#endregion
 #region website fonders config
 WEBSITE_ROOT_FOLDER = "/Users/WeezLabs/Develop/fo2rist-website/t-kittens_website"
 WEBSITE_CONTENT_FOLDER = join(WEBSITE_ROOT_FOLDER, "content/blog/")
 WEBSITE_DATA_FOLDER = join(WEBSITE_ROOT_FOLDER, "data/subtitles/")
 #endregion 
+
+#region metadata constants
+EPISODE_PREFIX = "#"
+#endregion
 
 def build_post_file_name(date, number, extension):
     return f"{date}_episode_{number}.{extension}"
@@ -23,7 +24,7 @@ def generate_content_for_blog(from_episode, until_episode):
         episode_folder = build_episode_folder_name(episode_number)
 
         # Fetch data parts (description, timings, links)
-        date = ""
+        recording_date = ""
         authors = []
         links = []
         briefs = []
@@ -31,7 +32,7 @@ def generate_content_for_blog(from_episode, until_episode):
         with open(join(episode_folder, DESCRIPTION_FILE_NAME)) as file:
             for line in file:
                 if date_match := date_regex.match(line):
-                    date = date_match[1]
+                    recording_date = date_match[1]
                 if timing_match := timings_regex.match(line):
                     authors.append(timing_match[2])
                 if link_match := links_regex.match(line):
@@ -50,8 +51,8 @@ def generate_content_for_blog(from_episode, until_episode):
                 if public_link_match := public_link_regex.match(line):
                     public_link = public_link_match[1].replace("/episodes/", "/embed/episodes/")
 
-        generate_content_for_episode(date, episode_number, authors, links, briefs, descriptions, public_link)
-        generate_subtitles_for_episode(date, episode_number)
+        generate_content_for_episode(recording_date, episode_number, authors, links, briefs, descriptions, public_link)
+        generate_subtitles_for_episode(recording_date, episode_number)
         
     
 def generate_content_for_episode(date, episode_number, authors, links, briefs, descriptions, public_link):
