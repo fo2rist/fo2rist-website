@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 # contains all common files/folders constant and utilities for episodes production
 
 import os

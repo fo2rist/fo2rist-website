@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 
 # A command to create long background https://superuser.com/questions/820830/loop-audio-file-to-a-given-length
 # A command for mixing https://stackoverflow.com/questions/58771658/how-to-add-outro-background-music-to-another-audio-file-with-ffmpeg

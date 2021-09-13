@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 # Generates and prints episode data in CSV format to export to airtble
 # Only needed to restore airtable episodes table by preserved episode descriptions
 from os.path import join
