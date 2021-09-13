@@ -1,9 +1,9 @@
 #!/usr/local/bin/python3
 
 import re
-from datetime import date
 from os.path import join
 from podcast_utils import *
+from t_kittens_episode import read_from_file
 
 #region website fonders config
 WEBSITE_ROOT_FOLDER = "/Users/WeezLabs/Develop/fo2rist-website/t-kittens_website"
@@ -21,42 +21,27 @@ def build_post_file_name(date, number, extension):
 def generate_content_for_blog(from_episode, until_episode):
     for episode_number in range(from_episode, until_episode):
         print(f"Generating post #{episode_number}")
-        episode_folder = build_episode_folder_name(episode_number)
-
-        # Fetch data parts (description, timings, links)
-        recording_date = ""
-        authors = []
-        links = []
-        briefs = []
-        descriptions = []
-        with open(join(episode_folder, DESCRIPTION_FILE_NAME)) as file:
-            for line in file:
-                if date_match := date_regex.match(line):
-                    recording_date = date_match[1]
-                if timing_match := timings_regex.match(line):
-                    authors.append(timing_match[2])
-                if link_match := links_regex.match(line):
-                    links.append(list(link_match[1].split(" ")))
-                if brief_match := theme_briefs_regex.match(line):
-                    briefs.append(brief_match[1])
-                if description_match := theme_descriptions_regex.match(line):
-                    descriptions.append(description_match[1])
-        authors = list(map(lambda name: name.replace("Дима", HOST_FULL_DIMA).replace("Жора", HOST_FULL_GEORGE).replace("Юля", HOST_FULL_YULIA), authors))
-        authors = list(set(authors)) # remove duplicates
-        authors.sort()
-
-        public_link = ""
-        with open(join(episode_folder, POST_SOCIAL_FILE_NAME)) as file:
-            for line in file:
-                if public_link_match := public_link_regex.match(line):
-                    public_link = public_link_match[1].replace("/episodes/", "/embed/episodes/")
-
-        generate_content_for_episode(recording_date, episode_number, authors, links, briefs, descriptions, public_link)
-        generate_subtitles_for_episode(recording_date, episode_number)
         
+        episode_folder = build_episode_folder_name(episode_number)
+        description_path = join(episode_folder, DESCRIPTION_FILE_NAME)
+        social_post_path = join(episode_folder, POST_SOCIAL_FILE_NAME)
+
+        print(" - Reading post data")
+        episode = read_from_file(episode_number, description_path, social_post_path)
+        # process data parts for blog
+        all_authors_full_names = list(map(lambda name: name
+                    .replace(HOST_DIMA, HOST_FULL_DIMA)
+                    .replace(HOST_GEORGE, HOST_FULL_GEORGE)
+                    .replace(HOST_YULIA, HOST_FULL_YULIA), 
+                episode.unique_authors))
+
+        print(" - Creating content")
+        generate_content_for_episode(episode.recording_date, episode.number, all_authors_full_names, episode.links, episode.briefs, episode.descriptions, episode.anchor_embedable_link)
+
+        print(" - Creating subtitles")
+        generate_subtitles_for_episode(episode.recording_date, episode.number)
     
 def generate_content_for_episode(date, episode_number, authors, links, briefs, descriptions, public_link):
-    print(" - Creating content")
     # Comment - short list of themes
     episode_comment = (", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))).replace('"', '＂') # fullsize quote is used to circumvent hugo bug with quotes parsing
     # Title - episode number + themes
@@ -97,8 +82,7 @@ def generate_subtitles_for_episode(date, episode_number):
     def sanitize(string):
         # google's voice recognition often makes this type of mistake
         return re.sub(r"наркотик", "Техно-котик", string, flags=re.IGNORECASE)
-    
-    print(" - Creating subtitles")
+
     episode_folder = build_episode_folder_name(episode_number)
     subtitles_file_file = build_episode_base_file_name(episode_number) + ".json"
     try:

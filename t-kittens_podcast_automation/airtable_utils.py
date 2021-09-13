@@ -7,11 +7,6 @@ import json
 import urllib.request
 import urllib.parse
 
-
-def _print_obj(object):
-    """Print object as formatted json for debug."""
-    print(json.dumps(object, indent=2, ensure_ascii=False))
-
 def airtable_get_items(api_key, base_id, table_name, params):
     """
     Get items from table by given search params.
