@@ -74,12 +74,38 @@ if len(timings) != len(links)\
     print(f"Some metadata is missing!\nFiles {recording_files}\nTimings {timings}\nLinks {links}\nBriefs {briefs}\nDescriptions {descriptions}")
     exit(0)
 
+# Build common metadata
+briefs_without_ignored = ", ".join(
+    list(filter(lambda s: not s.startswith('!!'), briefs)))
+
+# Generate description for social networks posts
+full_title = f"{PODCAST_NAME} #{episode_number}. {briefs_without_ignored}"
+social_description_path = join(episode_folder, POST_SOCIAL_FILE_NAME)
+if (os.path.exists(social_description_path)):
+    print(f"\nSocial description file already exists. Aborting overwrite.")
+    exit(0)
+
+with open(social_description_path, "w") as social_description_file:
+    social_description_file.write(f"DATE: {recording_date}\n\n")
+    social_description_file.write("PUBLISHING TITLE:\n\n")
+    social_description_file.write(full_title + "\n\n")
+    social_description_file.write("PUBLISHING CONTENT:\n\n")
+    social_description_file.writelines([f"{t} - {d}\n\n" for (t,d) in zip(timings, descriptions)])
+    social_description_file.writelines(
+        "Мы в социальных сетях: [vk.com/tkittens](https://vk.com/tkittens) | [facebook.com/TKittens](https://www.facebook.com/TKittens) | [t.me/tkittens](https://t.me/tkittens)\n\n")
+    social_description_file.writelines([" ".join(link_line)+"\n" for link_line in links])
+    social_description_file.write("\n\nPOST CONTENT:\n")
+    social_description_file.write(full_title + ".\n\n")
+    social_description_file.writelines([f"— {d}\n" for d in descriptions])
+    social_description_file.write("\nСсылки на новости на странице подкаста: ")
+    social_description_file.write("\nМы на Яндекс.Музыке: https://music.yandex.ru/album/12017408\n")
+
+
 # Generate metadata for production
 # Title - episode number
 episode_title = f"{EPISODE_PREFIX}{episode_number}"
 # Comment - short list of themes, excluding themes starting with '!!'
-episode_comment = ", ".join(
-    list(filter(lambda s: not s.startswith('!!'), briefs)))
+episode_comment = briefs_without_ignored
 # Description - themes of each chapter in the list
 episode_description = "\\n".join(descriptions)
 # chapters with optional links. Format {"start": "00:00:00", "title": "Start Chapter", "url": "http://auphonic.com"}
@@ -135,23 +161,4 @@ curl -X POST https://auphonic.com/api/productions.json \\
 """
 print(create_production_command)
 os.system(create_production_command)
-
-# full list of themes with timings serves as RSS description
-# e.g [t + " " + d for (t,d) in zip(timings, descriptions)]
-full_title = f"{PODCAST_NAME} #{episode_number}. {episode_comment}"
-with open(join(episode_folder, POST_SOCIAL_FILE_NAME), "w") as social_description_file:
-    social_description_file.write(f"DATE: {recording_date}\n\n")
-    social_description_file.write("PUBLISHING TITLE:\n\n")
-    social_description_file.write(full_title + "\n\n")
-    social_description_file.write("PUBLISHING CONTENT:\n\n")
-    social_description_file.writelines([f"{t} - {d}\n\n" for (t,d) in zip(timings, descriptions)])
-    social_description_file.writelines(
-        "Мы в социальных сетях: [vk.com/tkittens](https://vk.com/tkittens) | [facebook.com/TKittens](https://www.facebook.com/TKittens) | [t.me/tkittens](https://t.me/tkittens)\n\n")
-    social_description_file.writelines([" ".join(link_line)+"\n" for link_line in links])
-    social_description_file.write("\n\nPOST CONTENT:\n")
-    social_description_file.write(full_title + ".\n\n")
-    social_description_file.writelines([f"— {d}\n" for d in descriptions])
-    social_description_file.write("\nСсылки на новости на странице подкаста: ")
-    social_description_file.write("\nМы на Яндекс.Музыке: https://music.yandex.ru/album/12017408\n")
-
 os.system("open 'https://auphonic.com/engine/'")
