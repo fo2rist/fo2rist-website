@@ -37,7 +37,7 @@ class Episode:
         Human readable representation of the episode.
         """
         entries = list(zip(self.timings, self.authors, self.briefs, self.descriptions, self.links))
-        return f"Episode {self.number} - {self.recording_date}\n{entries}\n{self.anchor_link}"
+        return f"Episode {self.number} - {self.recording_date}\n{entries}\nPublished: {self.anchor_link}"
     
     #region Dynamic properties
     timings = property(lambda self: self.__timings.copy())
@@ -54,6 +54,14 @@ class Episode:
     """List of all authors in alphabetical order."""
     
     anchor_embedable_link = property(__get_anchor_embedable_link)
+    #endregion
+
+    #region Public methods
+    def is_news_data_complete(self):
+        """Check if all news in episode have timings, briefs, description, and (potentially empty) list of links"""
+        return len(self.timings) == len(self.links) and\
+            len(self.timings) == len(self.briefs) and\
+            len(self.timings) == len(self.descriptions)
     #endregion
 
 def read_from_file(episode_number: int, description_path: str, social_post_path: str = None) -> Episode:
