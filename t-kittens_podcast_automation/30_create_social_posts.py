@@ -36,29 +36,20 @@ def generate_content_for_blog(from_episode, until_episode):
                 episode.unique_authors))
 
         print(" - Creating content")
-        generate_content_for_episode(episode.recording_date, episode.number, all_authors_full_names, episode.links, episode.briefs, episode.descriptions, episode.anchor_embedable_link)
+        generate_content_for_episode(episode.recording_date, episode.number, all_authors_full_names, episode.links_markdown, episode.briefs, episode.descriptions, episode.anchor_embedable_link)
 
         print(" - Creating subtitles")
         generate_subtitles_for_episode(episode.recording_date, episode.number)
     
-def generate_content_for_episode(date, episode_number, authors, links, briefs, descriptions, public_link):
+def generate_content_for_episode(date, episode_number, authors, links_markdown, briefs, descriptions, public_link):
     # Comment - short list of themes
     episode_comment = (", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))).replace('"', '＂') # fullsize quote is used to circumvent hugo bug with quotes parsing
     # Title - episode number + themes
     episode_title = f"{EPISODE_PREFIX}{episode_number} | {episode_comment}"
     # Authors - mardown list of authors
     episode_authors = "\n  - ".join(authors)
-    # Description - long list of themes
-    link_number = 1
-    abbreviated_links = []
-    for topic_links in links:
-        formatted_topic_links = []
-        for link in topic_links:
-            if  len(link) != 0: 
-                formatted_topic_links.append(f"[[{link_number}]({link})]")
-                link_number += 1
-        abbreviated_links.append(" ".join(formatted_topic_links))
-    episode_description = "<br/>\n".join([f"— {d} {l}" for (d,l) in zip(descriptions, abbreviated_links)])
+    # Description - long list of themes + links
+    episode_description = "<br/>\n".join([f"— {d} {l}" for (d,l) in zip(descriptions, links_markdown)])
 
     post_content = f"""
 ---

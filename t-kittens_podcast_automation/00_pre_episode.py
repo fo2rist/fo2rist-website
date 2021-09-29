@@ -34,4 +34,3 @@ with open(DESCRIPTION_TEMPLATE_FILE_NAME, "r") as template_file:
 print(f"'{new_episode_folder}' created")
 
 os.system(f"open '{full_description_file_name}'")
-# TODO create a record in AirTable via API

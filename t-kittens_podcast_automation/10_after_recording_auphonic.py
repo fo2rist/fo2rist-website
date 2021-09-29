@@ -25,7 +25,7 @@ def generate_social_network_description(
     episode_number,
     recording_date,
     timings,
-    links,
+    links_markdown,
     briefs_without_ignored,
     descriptions,
 ):
@@ -42,14 +42,13 @@ def generate_social_network_description(
         social_post_file.write("PUBLISHING TITLE:\n\n")
         social_post_file.write(full_title + "\n\n")
         social_post_file.write("PUBLISHING CONTENT:\n\n")
-        social_post_file.writelines([f"{t} - {d}\n\n" for (t,d) in zip(timings, descriptions)])
+        social_post_file.writelines([f"{t} - {d} {l}\n\n" for (t,d, l) in zip(timings, descriptions, links_markdown)])
         social_post_file.writelines(
             "Мы в социальных сетях: [vk.com/tkittens](https://vk.com/tkittens) | [facebook.com/TKittens](https://www.facebook.com/TKittens) | [t.me/tkittens](https://t.me/tkittens)\n\n")
-        social_post_file.writelines([" ".join(link_line)+"\n" for link_line in links])
         social_post_file.write("\n\nPOST CONTENT:\n")
         social_post_file.write(full_title + ".\n\n")
         social_post_file.writelines([f"— {d}\n" for d in descriptions])
-        social_post_file.write("\nСсылки на новости на странице подкаста: ")
+        social_post_file.write(f"\nСсылки на новости на странице подкаста: https://t-kittens.fo2rist.com/blog/{recording_date}_episode_{episode_number}")
         social_post_file.write("\nМы на Яндекс.Музыке: https://music.yandex.ru/album/12017408\n")
 
 if __name__ == "__main__":    
@@ -81,10 +80,11 @@ if __name__ == "__main__":
         print(f"Some data for production is missing:\n{episode}")
         exit(0)
 
+    # TODO move !! checking logic and comment generation to Episode class
     # Create content for social networks
     briefs_without_ignored = ", ".join(
         list(filter(lambda s: not s.startswith('!!'), episode.briefs)))
-    generate_social_network_description(episode.number, episode.recording_date, episode.timings, episode.links, briefs_without_ignored, episode.descriptions)
+    generate_social_network_description(episode.number, episode.recording_date, episode.timings, episode.links_markdown, briefs_without_ignored, episode.descriptions)
 
     # Initiate audio rendering at Auphonic
     create_auphonic_production(

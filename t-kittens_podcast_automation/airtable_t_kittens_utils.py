@@ -12,7 +12,7 @@ load_dotenv()
 
 # AirTable API key is stored in the .env file
 api_key = os.getenv('AIRTABLE_API_KEY')
-# T-Kittens base ID
+# T-Kittens AirTable database ID
 base_id = 'appZGxPKp1pgzNTiw'
 
 

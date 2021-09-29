@@ -26,6 +26,19 @@ class Episode:
         self.__descriptions = descriptions
         self.anchor_link = anchor_link
 
+    def __get_links_abbreviated_markdown(self):
+        link_number = 1
+        abbreviated_links = []
+        # keep list of links per topic of episode
+        for topic_links in self.__links:
+            formatted_topic_links = []
+            for link in topic_links:
+                if  len(link) != 0: 
+                    formatted_topic_links.append(f"[[{link_number}]({link})]")
+                    link_number += 1
+            abbreviated_links.append(" ".join(formatted_topic_links))
+        return abbreviated_links
+
     def __get_anchor_embedable_link(self):
         return self.anchor_link.replace("/episodes/", "/embed/episodes/")
 
@@ -52,6 +65,9 @@ class Episode:
     
     unique_authors = property(__get_unique_authors)
     """List of all authors in alphabetical order."""
+
+    links_markdown = property(__get_links_abbreviated_markdown)
+    """Links wrapped in markdown with ordinals at titles."""
     
     anchor_embedable_link = property(__get_anchor_embedable_link)
     #endregion
