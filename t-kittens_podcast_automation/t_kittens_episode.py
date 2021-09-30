@@ -2,6 +2,7 @@
 
 from os.path import exists
 from podcast_utils import HOST_DIMA, HOST_GEORGE, HOST_YULIA, date_regex, timings_regex, links_regex, theme_briefs_regex, theme_descriptions_regex, public_link_regex
+from airtable_t_kittens_utils import AUTHOR, TIMING, get_author_names, get_episode, EPISODE_N, DATE, LINKS, BRIEFS, DESCRIPTIONS, get_news
 
 class Episode:
     """
@@ -113,4 +114,28 @@ def read_from_file(episode_number: int, description_path: str, social_post_path:
     authors_short_names = list(map(lambda name: name.replace("Дима", HOST_DIMA).replace("Жора", HOST_GEORGE).replace("Юля", HOST_YULIA), authors))
 
     episode = Episode(episode_number, recording_date, timings, authors_short_names, links, briefs, descriptions, x_public_link)
+    return episode
+
+def read_from_airtable(episode_number: int) -> Episode:
+    """
+    Read complete episode data from AirTable.
+    @returns None if episode not found 
+    """
+    try:
+        episode_data = get_episode(episode_number)
+        episode_number = episode_data[EPISODE_N]
+        news = get_news(episode_number)
+    except:
+        print(f'Episode {episode_number} can not be read from AirTable')
+        return None
+    
+    episode = Episode(
+        episode_number,
+        episode_data[DATE],
+        timings = list(map(lambda item: f"{item[TIMING] // 60}:{item[TIMING] % 60}", news)),
+        authors = get_author_names(list(map(lambda item: item[AUTHOR][0], news))),
+        links = list(map(lambda links_str: links_str.split(' '), episode_data[LINKS])),
+        briefs = episode_data[BRIEFS],
+        descriptions = episode_data[DESCRIPTIONS],
+        anchor_link = None)
     return episode

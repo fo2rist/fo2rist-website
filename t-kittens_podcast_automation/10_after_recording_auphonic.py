@@ -4,7 +4,7 @@ import os
 import re
 import shutil
 from os.path import join
-from t_kittens_episode import read_from_file
+from t_kittens_episode import read_from_file, read_from_airtable
 from auphonic_utils import create_auphonic_production
 from podcast_utils import *
 
@@ -74,10 +74,10 @@ if __name__ == "__main__":
     copy_recordings_to(recording_files, recording_folder, DRIVE_AUPHONIC_FOLDER)
 
     # Read episode data
-    episode = read_from_file(episode_number, description_path)
+    episode = read_from_airtable(episode_number)
     # and validate it
-    if not episode.is_news_data_complete():
-        print(f"Some data for production is missing:\n{episode}")
+    if episode is None or not episode.is_news_data_complete():
+        print(f"Some data for production is missing in episode:\n{episode}")
         exit(0)
 
     # TODO move !! checking logic and comment generation to Episode class
