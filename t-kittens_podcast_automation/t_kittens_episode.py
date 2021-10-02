@@ -1,8 +1,9 @@
 #!/usr/local/bin/python3
 
 from os.path import exists
+from urllib.parse import unquote
 from podcast_utils import HOST_DIMA, HOST_GEORGE, HOST_YULIA, date_regex, timings_regex, links_regex, theme_briefs_regex, theme_descriptions_regex, public_link_regex
-from airtable_t_kittens_utils import ANCHOR_LINK, AUTHOR, TIMING, get_author_names, get_episode, EPISODE_N, DATE, LINKS, BRIEFS, DESCRIPTIONS, get_news
+from airtable_t_kittens_utils import get_author_names, get_episode, get_news, ANCHOR_LINK, AUTHOR, DESCRIPTION, TIMING, TITLE, EPISODE_N, DATE, LINKS
 
 class Episode:
     """
@@ -18,14 +19,20 @@ class Episode:
         @param descriptions: list of detailed descriptions in order matching timings
         @param anchor_link: link to the episode on anchor.fm
         """
+        def _unquote_all(links: list[list[str]]) -> list[list[str]]:
+            return list(map(
+                lambda item_links: list(map(lambda link: unquote(link), item_links)),
+                links))
+
         self.number = number
         self.recording_date = recording_date
         self.__timings = timings
         self.__authors = authors
-        self.__links = links
+        self.__links = _unquote_all(links)
         self.__briefs = briefs
         self.__descriptions = descriptions
         self.anchor_link = anchor_link
+    
 
     def __get_links_abbreviated_markdown(self):
         link_number = 1
@@ -128,16 +135,14 @@ def read_from_airtable(episode_number: int) -> Episode:
     except:
         print(f'Episode {episode_number} can not be read from AirTable')
         return None
-    # Episodes may not have links, in this case AirTable won't return column at all, so replace with empty list if needed
-    links = episode_data.get(LINKS) or []
     
     episode = Episode(
         episode_number,
         episode_data[DATE],
         timings = list(map(lambda item: f"{item[TIMING] // 60}:{item[TIMING] % 60}", news)),
         authors = get_author_names(list(map(lambda item: item[AUTHOR][0], news))),
-        links = list(map(lambda links_str: links_str.split(' '), links)),
-        briefs = episode_data[BRIEFS],
-        descriptions = episode_data[DESCRIPTIONS],
+        links = list(map(lambda item: (item.get(LINKS) or '').split(' '), news)), # when there is no link, the field is missing
+        briefs = list(map(lambda item: item[TITLE].strip(), news)),
+        descriptions = list(map(lambda item: item[DESCRIPTION].strip(), news)),
         anchor_link = episode_data[ANCHOR_LINK])
     return episode

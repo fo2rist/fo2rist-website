@@ -19,15 +19,15 @@ __base_id = 'appZGxPKp1pgzNTiw'
 __FIELDS_KEY = 'fields'
 EPISODE_N = 'N'
 ANCHOR_LINK = 'Published URL'
-BRIEFS = 'Short Description'
 DATE = 'Date'
-DESCRIPTIONS = 'Full Description'
 HOSTS = 'Hosts'
-LINKS = 'Links'
 NEWS = 'News'
 NAME = 'Name'
 AUTHOR = 'Author'
+DESCRIPTION = 'Description'
+LINKS = 'Links'
 TIMING = 'Timing'
+TITLE = 'Title'
 
 def get_last_episode() -> dict:
     """Get last Episode record as Airtable's JSON."""
