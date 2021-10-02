@@ -3,7 +3,7 @@
 import re
 from os.path import join
 from podcast_utils import *
-from t_kittens_episode import read_from_file
+from t_kittens_episode import read_from_airtable
 
 #region website fonders config
 WEBSITE_ROOT_FOLDER = "/Users/WeezLabs/Develop/fo2rist-website/t-kittens_website"
@@ -21,13 +21,10 @@ def build_post_file_name(date, number, extension):
 def generate_content_for_blog(from_episode, until_episode):
     for episode_number in range(from_episode, until_episode):
         print(f"Generating post #{episode_number}")
-        
-        episode_folder = build_episode_folder_name(episode_number)
-        description_path = join(episode_folder, DESCRIPTION_FILE_NAME)
-        social_post_path = join(episode_folder, POST_SOCIAL_FILE_NAME)
 
         print(" - Reading post data")
-        episode = read_from_file(episode_number, description_path, social_post_path)
+        episode = read_from_airtable(episode_number)
+
         # process data parts for blog
         all_authors_full_names = list(map(lambda name: name
                     .replace(HOST_DIMA, HOST_FULL_DIMA)
@@ -40,7 +37,7 @@ def generate_content_for_blog(from_episode, until_episode):
 
         print(" - Creating subtitles")
         generate_subtitles_for_episode(episode.recording_date, episode.number)
-    
+
 def generate_content_for_episode(date, episode_number, authors, links_markdown, briefs, descriptions, public_link):
     # Comment - short list of themes
     episode_comment = (", ".join(list(filter(lambda s: not s.startswith('!!'), briefs)))).replace('"', '＂') # fullsize quote is used to circumvent hugo bug with quotes parsing

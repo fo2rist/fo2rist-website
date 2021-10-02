@@ -2,7 +2,7 @@
 
 from os.path import exists
 from podcast_utils import HOST_DIMA, HOST_GEORGE, HOST_YULIA, date_regex, timings_regex, links_regex, theme_briefs_regex, theme_descriptions_regex, public_link_regex
-from airtable_t_kittens_utils import AUTHOR, TIMING, get_author_names, get_episode, EPISODE_N, DATE, LINKS, BRIEFS, DESCRIPTIONS, get_news
+from airtable_t_kittens_utils import ANCHOR_LINK, AUTHOR, TIMING, get_author_names, get_episode, EPISODE_N, DATE, LINKS, BRIEFS, DESCRIPTIONS, get_news
 
 class Episode:
     """
@@ -137,5 +137,5 @@ def read_from_airtable(episode_number: int) -> Episode:
         links = list(map(lambda links_str: links_str.split(' '), episode_data[LINKS])),
         briefs = episode_data[BRIEFS],
         descriptions = episode_data[DESCRIPTIONS],
-        anchor_link = None)
+        anchor_link = episode_data[ANCHOR_LINK])
     return episode
