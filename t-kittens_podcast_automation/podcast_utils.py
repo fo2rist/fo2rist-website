@@ -144,9 +144,8 @@ def get_production_target_file(episode_number = None):
     If episode number is not specified, get last episode's production file.
     """
     source_file = get_production_source_file(episode_number)
-    # Remove pre-production file suffix and set the extension to mp3
-    # we may have either m4a or mp3 - replace it with `.mp3` if needed
-    return source_file.replace(PRODUCTION_FILE_SUFFIX, "").replace(".m4a", ".mp3")
+    # Remove pre-production file suffix
+    return source_file.replace(PRODUCTION_FILE_SUFFIX, "")
 
 def is_last_episode_ready_for_production():
     return get_production_source_file() is not None
