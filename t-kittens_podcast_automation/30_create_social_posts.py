@@ -47,13 +47,15 @@ def generate_content_for_episode(date, episode_number, authors, links_markdown, 
     episode_authors = "\n  - ".join(authors)
     # Description - long list of themes + links
     episode_description = "<br/>\n".join([f"— {d} {l}" for (d,l) in zip(descriptions, links_markdown)])
+    # Duration of final audio file in seconds
+    episode_duration = int(get_audio_duration(get_production_target_file(episode_number)))
 
     post_content = f"""
 ---
 title: '{episode_title}'
 date: {date}
 excerpt: '{episode_comment}'
-timeToRead: 0
+timeToRead: {episode_duration}
 authors:
   - {episode_authors}
 ---
