@@ -10,7 +10,6 @@
 
 
 import os
-import subprocess
 import shutil
 from os.path import join
 from podcast_utils import *
@@ -38,15 +37,12 @@ if not is_last_episode_ready_for_production():
         print(f"Removing {join(DRIVE_AUPHONIC_FOLDER, file)} ")
         os.remove(join(DRIVE_AUPHONIC_FOLDER, file))
     
-main_audio_file = get_file_for_production()
-print(f"Producing {main_audio_file}")
-
-# Remove pre-production file suffix and set the extension to mp3
-# we may have either m4a or mp3 - replace it with `.mp3` if needed
-output_file = main_audio_file.replace(PRODUCTION_FILE_SUFFIX, "").replace(".m4a", ".mp3")
+source_file = get_production_source_file()
+output_file = get_production_target_file()
+print(f"Producing {source_file} to {output_file}")
 
 # get duration of original file to set right timing for fade out
-duration = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1', main_audio_file], stdout=subprocess.PIPE, stderr=subprocess.STDOUT).stdout)
+duration = get_audio_duration(source_file)
 
 # Add intro and background music with ffmpeg. The filter works as follows:
 # - background music starts with delay [of 9000ms]
@@ -55,7 +51,7 @@ duration = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'for
 # - main audio mixed with long background trimmed at main audio length, and faded during that padding [after 2s for 3s]
 # - resulting audio mixed with intro trimmed at audio length
 add_intro_and_bg_command = f"""
-    ffmpeg -i '{BACKGROUND_AUDIO_FILE}' -i '{INTRO_AUDIO_FILE}' -i '{main_audio_file}'\
+    ffmpeg -i '{BACKGROUND_AUDIO_FILE}' -i '{INTRO_AUDIO_FILE}' -i '{source_file}'\
     -filter_complex\
     "[0]volume=2,adelay=9s[bg];\
      [1]volume=0.85[intro];\

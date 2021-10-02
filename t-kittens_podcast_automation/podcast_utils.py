@@ -4,6 +4,7 @@
 import os
 import re
 from os.path import join
+import subprocess
 
 #region metadata constants
 date_regex = re.compile(r"DATE: (\d\d\d\d-\d\d?-\d\d?)")
@@ -120,14 +121,36 @@ def get_auphonic_result_file_names():
     """Get names of files in pre-production results folder"""
     return list(filter(lambda s: s.startswith(PRODUCTION_FILE_PREFIX), os.listdir(DRIVE_AUPHONIC_RESULTS_FOLDER)))
 
-def get_file_for_production():
-    """Get pre-produced file name in the episode folder"""
-    last_episode_folder = get_last_episode_folder_name()
-    production_audio_files = [s for s in os.listdir(last_episode_folder) if _is_audio_file_name(s) and s.startswith(PRODUCTION_FILE_PREFIX)]
+def get_production_source_file(episode_number = None):
+    """
+    Get pre-produced audio file name in the episode folder.
+    If episode_number is not specified, get the last episode's file.
+    """
+    if (episode_number is None):
+        episode_folder = build_episode_folder_name(get_last_episode_number())
+    else:
+        episode_folder = build_episode_folder_name(episode_number)
+
+    production_audio_files = [s for s in os.listdir(episode_folder) if _is_audio_file_name(s) and s.startswith(PRODUCTION_FILE_PREFIX)]
+
     if not production_audio_files:
         return None
     else:
-        return join(last_episode_folder, production_audio_files[0])
+        return join(episode_folder, production_audio_files[0])
+
+def get_production_target_file(episode_number = None):
+    """
+    Get produces audio file name in episode folder.
+    If episode number is not specified, get last episode's production file.
+    """
+    source_file = get_production_source_file(episode_number)
+    # Remove pre-production file suffix and set the extension to mp3
+    # we may have either m4a or mp3 - replace it with `.mp3` if needed
+    return source_file.replace(PRODUCTION_FILE_SUFFIX, "").replace(".m4a", ".mp3")
 
 def is_last_episode_ready_for_production():
-    return get_file_for_production() is not None
+    return get_production_source_file() is not None
+
+def get_audio_duration(file: str) -> int:
+    """Get audio file duration in seconds."""
+    return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1', file], stdout=subprocess.PIPE, stderr=subprocess.STDOUT).stdout)
