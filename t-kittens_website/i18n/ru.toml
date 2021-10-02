@@ -35,8 +35,8 @@
 
 # Post
 [reading_time]
-  one = "1-Мин. чтения"
-  other = "{{ .Count }}-Мин. чтения"
+  one = "1 минута"
+  other = "{{ .Count }} Мин."
 [read_more]
   other = "Слушать на сайте"
 [share_post]

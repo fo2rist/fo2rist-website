@@ -55,7 +55,7 @@ def generate_content_for_episode(date, episode_number, authors, links_markdown, 
 title: '{episode_title}'
 date: {date}
 excerpt: '{episode_comment}'
-timeToRead: {episode_duration}
+episodeLength: {episode_duration}
 authors:
   - {episode_authors}
 ---
