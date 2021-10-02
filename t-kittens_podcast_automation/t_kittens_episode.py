@@ -128,13 +128,15 @@ def read_from_airtable(episode_number: int) -> Episode:
     except:
         print(f'Episode {episode_number} can not be read from AirTable')
         return None
+    # Episodes may not have links, in this case AirTable won't return column at all, so replace with empty list if needed
+    links = episode_data.get(LINKS) or []
     
     episode = Episode(
         episode_number,
         episode_data[DATE],
         timings = list(map(lambda item: f"{item[TIMING] // 60}:{item[TIMING] % 60}", news)),
         authors = get_author_names(list(map(lambda item: item[AUTHOR][0], news))),
-        links = list(map(lambda links_str: links_str.split(' '), episode_data[LINKS])),
+        links = list(map(lambda links_str: links_str.split(' '), links)),
         briefs = episode_data[BRIEFS],
         descriptions = episode_data[DESCRIPTIONS],
         anchor_link = episode_data[ANCHOR_LINK])
