@@ -144,5 +144,5 @@ def read_from_airtable(episode_number: int) -> Episode:
         links = list(map(lambda item: (item.get(LINKS) or '').split(' '), news)), # when there is no link, the field is missing
         briefs = list(map(lambda item: item[TITLE].strip(), news)),
         descriptions = list(map(lambda item: item[DESCRIPTION].strip(), news)),
-        anchor_link = episode_data[ANCHOR_LINK])
+        anchor_link = episode_data.get(ANCHOR_LINK))
     return episode
