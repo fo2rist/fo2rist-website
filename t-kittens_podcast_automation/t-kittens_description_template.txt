@@ -7,22 +7,10 @@
 Вы слушаете $EPISODE_N выпуск Техно-котиков. Сегодня $RECORDING_INTRO_DATE года. В студии Дима, Жора и Юля...
 
 %Тут моя подготовка с полным текстом%
+%Ссылки%
   Вопрос: в чем соль?
 
-DATE: $RECORDING_DATE
 TIMING
 00:20 - имя_автора
 10:00 - имя_автора
 20:00 - имя_автора
-
-THEME_1_SHORT: 
-THEME_2_SHORT: 
-THEME_3_SHORT: 
-
-THEME_1_FULL: 
-THEME_2_FULL: 
-THEME_3_FULL: 
-
-LINKS_1: 
-LINKS_2: 
-LINKS_3: 
