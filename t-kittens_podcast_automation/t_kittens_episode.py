@@ -139,7 +139,7 @@ def read_from_airtable(episode_number: int) -> Episode:
     episode = Episode(
         episode_number,
         episode_data[DATE],
-        timings = list(map(lambda item: f"{item[TIMING] // 60}:{item[TIMING] % 60}", news)),
+        timings = list(map(lambda item: f"{item[TIMING] // 60:02}:{item[TIMING] % 60:02}", news)),
         authors = get_author_names(list(map(lambda item: item[AUTHOR][0], news))),
         links = list(map(lambda item: (item.get(LINKS) or '').split(' '), news)), # when there is no link, the field is missing
         briefs = list(map(lambda item: item[TITLE].strip(), news)),
