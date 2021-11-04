@@ -1,10 +1,9 @@
 #!/usr/local/bin/python3
 
 import os
-import re
 import shutil
 from os.path import join
-from t_kittens_episode import read_from_file, read_from_airtable
+from t_kittens_episode import read_from_airtable
 from auphonic_utils import create_auphonic_production
 from podcast_utils import *
 
