@@ -13,8 +13,8 @@ GOOGLE_DRIVE_SERVICE_ID = "uKrCoE47igevybFq73HrQE"
 #endregion
 
 def escape(s):
-    """Replace quotes with escaped quotes for JSON"""
-    return s.replace('"', '\\"')
+    """Replace quotes with escaped quotes and line breaks with \n for JSON"""
+    return s.replace('"', '\\"').replace("\n", "\\n")
 
 def create_auphonic_production(episode_number, episode_title, episode_comment, episode_description, timings, links, briefs, recording_files):
     """Create new production on Auphonic platform"""
