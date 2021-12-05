@@ -28,6 +28,7 @@ pluralizeListTitles     = false
   imageStretch          = ""
   removeBlur            = false
   socialShare           = []
+  # shareFromPost         = false
   summary_length        = 1000
   hideEmptyStats        = true
 
