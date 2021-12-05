@@ -9,7 +9,7 @@ from t_kittens_episode import read_from_airtable
 WEBSITE_ROOT_FOLDER = "/Users/WeezLabs/Develop/fo2rist-website/t-kittens_website"
 WEBSITE_CONTENT_FOLDER = join(WEBSITE_ROOT_FOLDER, "content/blog/")
 WEBSITE_DATA_FOLDER = join(WEBSITE_ROOT_FOLDER, "data/subtitles/")
-#endregion 
+#endregion
 
 #region metadata constants
 EPISODE_PREFIX = "#"
@@ -29,7 +29,7 @@ def generate_content_for_blog(from_episode, until_episode):
         all_authors_full_names = list(map(lambda name: name
                     .replace(HOST_DIMA, HOST_FULL_DIMA)
                     .replace(HOST_GEORGE, HOST_FULL_GEORGE)
-                    .replace(HOST_YULIA, HOST_FULL_YULIA), 
+                    .replace(HOST_YULIA, HOST_FULL_YULIA),
                 episode.unique_authors))
 
         print(" - Creating content")
@@ -88,5 +88,5 @@ if __name__ == "__main__":
     assert_tkittens_podcast_folder()
     # Locate recordings
     last_episode_number = get_last_episode_number()
-    
+
     generate_content_for_blog(from_episode = last_episode_number, until_episode = last_episode_number + 1)

@@ -41,7 +41,7 @@ def generate_social_network_description(
         social_post_file.write("PUBLISHING TITLE:\n\n")
         social_post_file.write(full_title + "\n\n")
         social_post_file.write("PUBLISHING CONTENT:\n\n")
-        social_post_file.writelines([f"{t} - {d} {l}\n\n" for (t,d, l) in zip(timings, descriptions, links_markdown)])
+        social_post_file.writelines([f"{t} - {d} {l}\n\n" for (t,d,l) in zip(timings, descriptions, links_markdown)])
         social_post_file.writelines(
             "Мы в социальных сетях: [vk.com/tkittens](https://vk.com/tkittens) | [facebook.com/TKittens](https://www.facebook.com/TKittens) | [t.me/tkittens](https://t.me/tkittens)\n\n")
         social_post_file.write("\n\nPOST CONTENT:\n")
@@ -50,7 +50,7 @@ def generate_social_network_description(
         social_post_file.write(f"\nСсылки на новости на странице подкаста: https://t-kittens.fo2rist.com/blog/{recording_date}_episode_{episode_number}")
         social_post_file.write("\nМы на Яндекс.Музыке: https://music.yandex.ru/album/12017408\n")
 
-if __name__ == "__main__":    
+if __name__ == "__main__":
     # Sanity check
     assert_tkittens_podcast_folder()
 
