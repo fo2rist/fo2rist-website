@@ -1,0 +1,187 @@
+# homepage
+homepage:
+  head:
+    title: "Home | Raditian"
+# showcase
+showcase:
+  enable: true
+  title: "Hello, I’m Dmitry."
+  subtitle: "Software Developer, Blogger, Podcaster"
+  description: "Привет, я — Дмитрий, инженер, блоггер, подкастер."
+  image:
+    alt: "Showcase keyboard and mouse image"
+    x: "img/showcase/showcase.png"
+    _2x: "img/showcase/showcase@2x.png"
+  imageMobile:
+    alt: "Showcase keyboard and mouse image"
+    x: "img/showcase/showcase-mobile.jpg"
+
+  button:
+    icon: "icon-mail-fill"
+    btnText: "Contact"
+    URL: "mailto:fo2rist+personal@gmail.com"
+
+  socialLinks:
+    - icon: "linkedin"
+      URL: "https://www.linkedin.com/in/fo2rist/"
+
+    - icon: "github"
+      URL: "https://github.com/fo2rist"
+
+    - icon: "twitter"
+      URL: "https://twitter.com/fo2rist"
+
+    - icon: "instagram"
+      URL: "https://www.instagram.com/fo2rist"
+
+    - icon: "facebook"
+      URL: "https://www.facebook.com/fo2rist"
+
+# about
+about:
+  enable: true
+  title: "Who am I? / Кто я?"
+  content: '<p class="lead">
+    I&#39;m a software engineer with experience in mobile, back-end, machine learning and management.
+    </p>
+    <p class="lead">
+    Большая часть моей профессиональной деятельности проходит в США и доступна только на английском,
+    но <a href="#portfolio">личный блог и подкаст о науке я делаю на русском</a>
+    </p>'
+  button:
+    icon: "facebook"
+    btnText: "Facebook"
+    URL: "https://www.facebook.com/fo2rist"
+  image:
+    x: "img/me_white.png"
+    _2x: "img/me_white.png"
+
+# education
+education:
+  enable: true
+  title: "Education"
+  items:
+    - university: "Southern Federal University (Russia)"
+      year: "2004-2009"
+      degree: "Master of Science, Software Engineering, Diploma with Honor"
+
+    - university: "Taganrog Lyceum #1"
+      year: "2002-2004"
+      degree: "High School Diploma with Silver Medal"
+
+# experience
+experience:
+  enable: true
+  title: "Experience"
+  description: "Over 10+ years of experience working with companies from all over the world mostly US."
+  button:
+    icon: "icon-linkedin-fill"
+    btnText: "Linkedin"
+    URL: "https://www.linkedin.com/in/fo2rist/"
+
+  items:
+    - title: "Lead Software Engineer"
+      company: "Distillery"
+      duration: "Mar 2017 - now"
+
+    - title: "CTO / General Manager"
+      company: "Distillery"
+      duration: "Jul 2014 - Mar 2017"
+
+    - title: "Mobile and Desktop Engineer"
+      company: "Distillery / Other"
+      duration: "Sep 2008 - Jul 2014"
+
+# Client & Work
+client_and_work:
+  enable: true
+  title: "Work & Publications"
+
+  clients:
+    - logo:
+        x: "img/clients/droidcon.png"
+        _2x: "img/clients/droidcon.png"
+      title: "Kotlin speech"
+      alt: "Droidcon / Kotlin scope functions"
+      URL: "https://www.droidcon.com/2020/10/10/kotlin-scope-and-extension-functions-when-to-use-and-how-to-improve-not-harm-the-readability/?video=414726423"
+    - logo:
+        x: "img/clients/microverse.png"
+        _2x: "img/clients/microverse.png"
+      title: '"Be humble!" speech'
+      alt: "Microverse / Be humble"
+      URL: "https://www.bigmarker.com/microverse/Be-humble-The-Essential-Soft-Skills-an-Engineer-needs-A-Manager-s-Perspective"
+    - logo:
+        x: "img/clients/youtube.png"
+        _2x: "img/clients/youtube.png"
+      title: 'Интервью со мной'
+      alt: "Интервью / В директора и обратно"
+      URL: "https://www.youtube.com/watch?v=MA_7Q1gvkIY"
+
+  works:
+    - title: "Engineering blog"
+      description: "Blog about software development"
+      button:
+        icon: "icon-arrow-right"
+        btnText: "Read"
+        URL: "https://fo2rist.medium.com"
+      image:
+        x: "img/works/screenshot_medium_fo2rist.png"
+        _2x: "img/works/screenshot_medium_fo2rist.png"
+      is_even: true
+
+    - title: "Personal blog / Личный блог на русском"
+      description: "Заметки из путешествий и размышления"
+      button:
+        icon: "icon-arrow-right"
+        btnText: "Читать"
+        URL: "https://fo2rist-ru.medium.com"
+      image:
+        x: "img/works/screenshot_medium_fo2rist_ru.png"
+        _2x: "img/works/screenshot_medium_fo2rist_ru.png"
+      is_even: false
+
+    - title: 'Podcast / Подкаст "Техно-Котики"'
+      description: Подкаст о науке и технике"
+      button:
+        icon: "icon-arrow-right"
+        btnText: "Слушать"
+        URL: "https://t-kittens.fo2rist.com/"
+      image:
+        x: "img/works/screenshot_t_kittens.png"
+        _2x: "img/works/screenshot_t_kittens.png"
+      is_even: true
+
+# testimonial
+testimonial:
+  enable: false
+
+# contact
+contact:
+  enable: true
+  title: "Contact"
+  form:
+    method: "POST"
+    action: "#"
+    full_name: "Full Name"
+    email: "Email Address"
+    message: "Type Your Message Here"
+  phone:
+    title: "Phone Number (voicemail)"
+    number: '<a href="tel:+12134443268">+1 (213) 444-3268</a>'
+  email:
+    title: "Email"
+    email: '<a href="mailto:fo2rist+personal@gmail.com">write me an email</a>'
+  address:
+    title: "Address"
+    address: "Los Angeles, California"
+  button:
+    icon: "icon-mail-fill"
+    btnText: "Send Message"
+
+# newsletter
+newsletter:
+  enable: false
+  title: "Newsletter subscription"
+  success_message: "Successfully subscribed"
+  error_message: "Error while subscribing."
+  note: "I'll never share your email with anyone else."
