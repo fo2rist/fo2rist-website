@@ -9,5 +9,6 @@ social:
   github: YGeorge
   twitter: ymgeorge
   vk: ygeorge
+  instagram: ymygeorge
 ---
 Менеджер. Инженер. Хост подкаста.

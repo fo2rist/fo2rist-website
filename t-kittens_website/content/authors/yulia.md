@@ -7,5 +7,6 @@ featured: "yulia.jpeg"
 shortname: Юля
 social:
   vk: y.bochkareva
+  instagram: yulia__terra
 ---
 Аналитик данных. Эколог. Хост подкаста.

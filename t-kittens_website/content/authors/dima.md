@@ -9,5 +9,6 @@ social:
   github: fo2rist
   twitter: fo2rist
   vk: fo2rist
+  instagram: fo2rist
 ---
 Программист. Энтузиаст ИИ. Хост подкаста.
