@@ -53,8 +53,8 @@ about:
     btnText: "Facebook"
     URL: "https://www.facebook.com/fo2rist"
   image:
-    x: "img/who-am-i/user-me-white.png.png"
-    _2x: "img/who-am-i/user-me-white.png.png"
+    x: "img/who-am-i/user-me-white.png"
+    _2x: "img/who-am-i/user-me-white.png"
 
 # education
 education:
