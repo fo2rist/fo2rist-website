@@ -35,12 +35,6 @@ theme = "raditian-free-hugo-theme"
   URL = "#portfolio"
   weight = 3
 
-  [[menu.header]]
-  name = "Contact"
-  URL = "#contact"
-  weight = 4
-
-
   [[menu.footer]]
   name = "Me"
   URL = "#about"
@@ -51,14 +45,9 @@ theme = "raditian-free-hugo-theme"
   URL = "#portfolio"
   weight = 3
 
-  [[menu.footer]]
-  name = "Contact"
-  URL = "#contact"
-  weight = 4
-
 
 [params]
-
+  # Sections order (sections can still be enabled individually in data/homepage.yml)
   sections = ["showcase", "about", "education", "experience", "client-and-work", "testimonial", "contact", "newsletter"]
 
   googleTagManagerID = "GTM-000000" # Google Analytics works with Google Tag Manager
