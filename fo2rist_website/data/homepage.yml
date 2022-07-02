@@ -78,9 +78,13 @@ experience:
     URL: "https://www.linkedin.com/in/fo2rist/"
 
   items:
+    - title: "Senior Engineer / SDE III"
+      company: "Amazon"
+      duration: "Apr 2022 - now"
+
     - title: "Lead Software Engineer"
       company: "Distillery"
-      duration: "Mar 2017 - now"
+      duration: "Mar 2017 - Apr 2022"
 
     - title: "CTO / General Manager"
       company: "Distillery"
