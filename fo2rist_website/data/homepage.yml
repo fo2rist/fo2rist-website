@@ -1,8 +1,6 @@
-# homepage
-homepage:
-  head:
-    title: "Home | Raditian"
-# showcase
+head:
+  title: "fo2rist | Dmitry Sitnikov"
+
 showcase:
   enable: true
   title: "Hello, I’m Dmitry."
