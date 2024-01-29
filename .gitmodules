@@ -4,3 +4,6 @@
 [submodule "fo2rist_website/themes/raditian-free-hugo-theme"]
 	path = fo2rist_website/themes/raditian-free-hugo-theme
 	url = https://github.com/radity/raditian-free-hugo-theme.git
+[submodule "fo2rist_blog_v2/themes/hugo-kiera"]
+	path = fo2rist_blog/themes/hugo-kiera
+	url = https://github.com/funkydan2/hugo-kiera.git

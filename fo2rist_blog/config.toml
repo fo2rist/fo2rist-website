@@ -1,0 +1,26 @@
+baseURL = 'http://blog.fo2rist.com/'
+languageCode = 'ru'
+title = 'fo2rist | Dima в Америках'
+theme = "hugo-kiera"
+
+pygmentsCodeFences = true
+
+disqusShortname = "" #Disqus shortname
+googleAnalytics = "" #Google Analytics ID
+
+
+[author]
+    name = "fo2rist"           #Author name
+    # github = ""         #Github username
+    # gitlab = ""         #Gitlab username
+    # linkedin = ""       #LinkedIn username
+    facebook = "fo2rist"       #Facebook username
+    twitter = "fo2rist"        #Twitter username
+    instagram = "fo2rist"      #Instagram username
+    # stackoverflow = ""  #StackOverflow username
+    # devto = ""          #Dev.to username
+
+[params]
+    tagline = "блог обо всем, ни о чем, и эмигрантской жизни"
+    customCSS = []  #Optional Customised CSS
+    disableDarkModeCSS = false # disables css style for users using dark-mode
