@@ -1,4 +1,4 @@
-baseURL = 'http://blog.fo2rist.com/'
+baseURL = 'https://blog.fo2rist.com/'
 languageCode = 'ru'
 title = 'fo2rist | Dima в Америках'
 theme = "hugo-kiera"
