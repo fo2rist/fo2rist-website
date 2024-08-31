@@ -142,7 +142,7 @@ client_and_work:
       button:
         icon: "icon-arrow-right"
         btnText: "Читать"
-        URL: "https://fo2rist-ru.medium.com"
+        URL: "https://blog.fo2rist.com"
       image:
         x: "img/works/screenshot_medium_fo2rist_ru.png"
         _2x: "img/works/screenshot_medium_fo2rist_ru.png"
