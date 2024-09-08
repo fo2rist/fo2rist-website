@@ -6,7 +6,10 @@ theme = "hugo-kiera"
 pygmentsCodeFences = true
 
 disqusShortname = "" #Disqus shortname
-googleAnalytics = "" #Google Analytics ID
+
+# Allow iframe tag
+[markup.goldmark.renderer]
+unsafe = true
 
 
 [author]
