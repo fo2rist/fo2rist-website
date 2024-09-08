@@ -7,3 +7,5 @@ meta: false
 ---
 
 Сайт: https://fo2rist.com
+
+Активный блог: https://t.me/fo2rist_blog
